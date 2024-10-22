@@ -10,7 +10,7 @@ class FirstScreen extends StatefulWidget {
 }
 
 class FirstScreenState extends State<FirstScreen> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   void navBottomBar(int index) {
     setState(() {

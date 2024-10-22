@@ -1,4 +1,4 @@
-package com.example.scoliosis_analysis_app
+package com.example.file
 
 import io.flutter.embedding.android.FlutterActivity
 
