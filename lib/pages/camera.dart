@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mlkit_image_labeling/google_mlkit_image_labeling.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -57,6 +58,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
     for (ImageLabel label in labels) {
       final String text = label.label;
+      // ignore: unused_local_variable
       final int index = label.index;
       final double confidence = label.confidence;
       print(text + "   " + confidence.toString());
@@ -73,7 +75,14 @@ class _CameraScreenState extends State<CameraScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF0AC174),
-        title: Text("วิเคราะห์"),
+        title: Text(
+          "วิเคราะห์",
+          style: GoogleFonts.ibmPlexSansThai(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
         centerTitle: true,
       ),
       body: Center(

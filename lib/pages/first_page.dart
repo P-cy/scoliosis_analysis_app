@@ -18,38 +18,65 @@ class FirstScreenState extends State<FirstScreen> {
     });
   }
 
-  final List<Widget>  pages = [
+  final List<Widget> pages = [
     InformationScreen(),
     CameraScreen(),
     ExerciseScreen(),
   ];
 
   final List<PersistentBottomNavBarItem> items = [
-    PersistentBottomNavBarItem(icon: Icon(Icons.inbox_rounded,color: Colors.black),title: 'ข้อมูล',textStyle: TextStyle(color: Colors.black),activeColorPrimary: Colors.green.shade300),
-    PersistentBottomNavBarItem(icon: Icon(Icons.camera_alt_outlined,color: Colors.black),title: 'วิเคราะห์',textStyle: TextStyle(color: Colors.black),activeColorSecondary: Colors.green.shade300,activeColorPrimary: Colors.green.shade300),
-    PersistentBottomNavBarItem(icon: Icon(Icons.directions_walk_sharp,color: Colors.black),title: 'กายภาพ',textStyle: TextStyle(color: Colors.black),activeColorPrimary: Colors.green.shade300),
+    PersistentBottomNavBarItem(
+      icon: Icon(Icons.inbox_rounded,size: 30,),
+      title: 'ข้อมูล',
+      textStyle: TextStyle(
+          color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),inactiveColorPrimary: Colors.black,activeColorPrimary: Colors.green
+    ),
+    PersistentBottomNavBarItem(
+        icon: Icon(Icons.camera_alt_outlined,size: 30,color: Colors.white,),
+        title: 'วิเคราะห์',
+        textStyle: TextStyle(
+            color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),inactiveColorPrimary: Colors.black,activeColorPrimary: Colors.green),
+    PersistentBottomNavBarItem(
+      icon: Icon(Icons.directions_walk_sharp,size: 30,),
+      title: 'กายภาพ',
+      textStyle: TextStyle(
+          color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),inactiveColorPrimary: Colors.black,activeColorPrimary: Colors.green
+    ),
   ];
-
-  
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Scoliosis'),
-      ),
       body: pages[_selectedIndex],
       bottomNavigationBar: PersistentTabView(
-        context, 
+        context,
         screens: pages,
         items: items,
         decoration: NavBarDecoration(borderRadius: BorderRadius.circular(1)),
         navBarStyle: NavBarStyle.style15,
-        
-        
+        handleAndroidBackButtonPress: true, // Default is true.
+        resizeToAvoidBottomInset:
+            true, // This needs to be true if you want to move up the screen on a non-scrollable screen when keyboard appears. Default is true.
+        stateManagement: true, // Default is true.
+        hideNavigationBarWhenKeyboardAppears: true,
+        popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
+        padding: const EdgeInsets.only(top: 8),
+        animationSettings: const NavBarAnimationSettings(
+          navBarItemAnimation: ItemAnimationSettings(
+            // Navigation Bar's items animation properties.
+            duration: Duration(milliseconds: 400),
+            curve: Curves.ease,
+          ),
+          screenTransitionAnimation: ScreenTransitionAnimationSettings(
+            // Screen transition animation on change of selected tab.
+            animateTabTransition: true,
+            duration: Duration(milliseconds: 200),
+            screenTransitionAnimationType: ScreenTransitionAnimationType.fadeIn,
+          ),
         ),
-        
+        confineToSafeArea: true,
+        navBarHeight: kBottomNavigationBarHeight,
+      ),
     );
   }
 }
