@@ -45,43 +45,64 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                final exercise = exercises[index];
                 return Card(
                   margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                  child: ListTile(
-                    leading: Image.asset(
-                      exercise['image']!,
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                    ),
-                    title: Text(
-                      exercise['title']!,
-                      style: GoogleFonts.ibmPlexSansThai(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  elevation: 4,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Color(0xFF74AEEF), Color(0xFF4B88D2)],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
                       ),
-                    ),
-                    subtitle: Text(
-                      exercise['description']!,
-                      style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-                    ),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Color(0xFF0AC174),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ExerciseDetailScreen(
-                            title: exercise['title']!,
-                            detail: exercise['detail']!,
-                            image: exercise['image']!,
-                          ),
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10,
+                          offset: Offset(0, 4),
                         ),
-                      );
-                    },
+                      ],
+                    ),
+                    child: ListTile(
+                      leading: Image.asset(
+                        exercises[index]['image']!,
+                        width: 50,
+                        height: 50,
+                        fit: BoxFit.cover,
+                      ),
+                      title: Text(
+                        exercises[index]['title']!,
+                        style: GoogleFonts.ibmPlexSansThai(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                      subtitle: Text(
+                        exercises[index]['description']!,
+                        style: GoogleFonts.ibmPlexSansThai(
+                            fontSize: 16, color: Colors.white70),
+                      ),
+                      trailing: Icon(
+                        Icons.format_align_justify_rounded,
+                        color: Colors.white,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ExerciseDetailScreen(
+                              title: exercises[index]['title']!,
+                              detail: exercises[index]['detail']!,
+                              image: exercises[index]['image']!,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 );
               },

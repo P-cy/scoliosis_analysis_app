@@ -13,6 +13,7 @@ class SpineInfoScreen extends StatelessWidget {
           style: GoogleFonts.ibmPlexSansThai(
             fontSize: 24,
             fontWeight: FontWeight.bold,
+            color: Colors.white
           ),
         ),
         backgroundColor: Color(0xFF0AC174),
@@ -99,8 +100,8 @@ class ScoliosisInfoScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('ข้อมูลเกี่ยวกับโรคกระดูกสันหลังคด',
-            style: GoogleFonts.ibmPlexSansThai(
-                fontSize: 24, fontWeight: FontWeight.bold)),
+        style: GoogleFonts.ibmPlexSansThai(
+        fontSize: 24, fontWeight: FontWeight.bold,color: Colors.white)),
         backgroundColor: Color(0xFF0AC174),
         centerTitle: true,
       ),
