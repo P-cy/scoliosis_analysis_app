@@ -24,7 +24,7 @@ class ExerciseDetailScreen extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        backgroundColor: Color(0xFF4B88D2),
+        backgroundColor: Color(0xFF0AC174),
         centerTitle: true,
       ),
       body: Container(
@@ -55,7 +55,7 @@ class ExerciseDetailScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 16),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 100,horizontal: 100),
+                  padding: EdgeInsets.symmetric(vertical: 100,horizontal: 120),
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(1),
                     borderRadius: BorderRadius.circular(12),
@@ -74,7 +74,7 @@ class ExerciseDetailScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                   ),
                 ),
               ],
