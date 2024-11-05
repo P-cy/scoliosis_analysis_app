@@ -50,32 +50,37 @@ class ExerciseDetailScreen extends StatelessWidget {
                   child: Image.asset(
                     image,
                     width: double.infinity,
-                    height: 200,
-                    fit: BoxFit.cover,
+                    height: 300,
+                    fit: BoxFit.contain,
                   ),
                 ),
                 SizedBox(height: 16),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 100,horizontal: 120),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(1),
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 6,
-                        offset: Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: Text(
-                    detail,
-                    style: GoogleFonts.ibmPlexSansThai(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                Center(
+                  child: Container(
+                    alignment: Alignment.topLeft,
+                    height: 300,
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(1),
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
                     ),
-                    textAlign: TextAlign.start,
+                    child: Text(
+                      detail,
+                      style: GoogleFonts.ibmPlexSansThai(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                      textAlign: TextAlign.start
+                    ),
                   ),
                 ),
               ],
