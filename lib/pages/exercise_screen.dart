@@ -27,6 +27,7 @@ class ExerciseDetailScreen extends StatelessWidget {
         backgroundColor: Color(0xFF0AC174),
         centerTitle: true,
       ),
+      
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
