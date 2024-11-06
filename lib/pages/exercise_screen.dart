@@ -4,12 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 class ExerciseDetailScreen extends StatelessWidget {
   final String title;
   final String detail;
-  final String image;
+  final String image1;
+  final String image2;
 
   ExerciseDetailScreen({
     required this.title,
     required this.detail,
-    required this.image,
+    required this.image1,
+    required this.image2,
   });
 
   @override
@@ -47,13 +49,44 @@ class ExerciseDetailScreen extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    image,
-                    width: double.infinity,
-                    height: 300,
-                    fit: BoxFit.contain,
+                  child: Row(
+                    children: [
+                      Flexible(
+                          child:  CustomScrollView(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            slivers: <Widget>[
+                           SliverPadding(
+                          padding: const EdgeInsets.all(20.0),
+                          sliver:  SliverList(
+                            delegate:  SliverChildListDelegate(
+                              <Widget>[
+                                Image.asset(
+                        image1,
+                        width: double.infinity,
+                        height: 300,
+                        fit: BoxFit.contain,
+                      ),
+                      Image.asset(
+                        image1,
+                        width: double.infinity,
+                        height: 300,
+                        fit: BoxFit.contain,
+                      ),
+                              ]
+                            ),
+                          ),
+                        ),
+                      
+                    ],
+                  ),
+                    
+                ),
+                    ]
                   ),
                 ),
+                  
+
                 SizedBox(height: 16),
                 Center(
                   child: Container(
