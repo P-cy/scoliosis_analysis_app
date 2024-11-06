@@ -29,7 +29,6 @@ class ExerciseDetailScreen extends StatelessWidget {
         backgroundColor: Color(0xFF0AC174),
         centerTitle: true,
       ),
-      
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -38,7 +37,6 @@ class ExerciseDetailScreen extends StatelessWidget {
             colors: [Color(0xFF74AEEF), Color(0xFF4B88D2)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            
           ),
         ),
         child: SingleChildScrollView(
@@ -47,55 +45,37 @@ class ExerciseDetailScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Row(
-                    children: [
-                      Flexible(
-                          child:  CustomScrollView(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            slivers: <Widget>[
-                           SliverPadding(
-                          padding: const EdgeInsets.all(20.0),
-                          sliver:  SliverList(
-                            delegate:  SliverChildListDelegate(
-                              <Widget>[
-                                Image.asset(
+                Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
                         image1,
                         width: double.infinity,
-                        height: 300,
-                        fit: BoxFit.contain,
+                        height: 325,
+                        fit: BoxFit.cover,
                       ),
-                      Image.asset(
-                        image1,
+                    ),
+                    SizedBox(height: 16),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        image2,
                         width: double.infinity,
-                        height: 300,
-                        fit: BoxFit.contain,
+                        height: 325,
+                        fit: BoxFit.cover,
                       ),
-                              ]
-                            ),
-                          ),
-                        ),
-                      
-                    ],
-                  ),
-                    
+                    ),
+                  ],
                 ),
-                    ]
-                  ),
-                ),
-                  
-
                 SizedBox(height: 16),
                 Center(
                   child: Container(
                     alignment: Alignment.topLeft,
-                    height: 300,
                     width: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(1),
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
@@ -109,10 +89,18 @@ class ExerciseDetailScreen extends StatelessWidget {
                       detail,
                       style: GoogleFonts.ibmPlexSansThai(
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
                         color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        height: 1.5,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 4,
+                            color: Colors.black26,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
                       ),
-                      textAlign: TextAlign.start
+                      textAlign: TextAlign.start,
                     ),
                   ),
                 ),
