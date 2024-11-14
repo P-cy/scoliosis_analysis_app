@@ -7,7 +7,7 @@ class ExerciseDetailScreen extends StatelessWidget {
   final String image1;
   final String image2;
 
-  ExerciseDetailScreen({
+  const ExerciseDetailScreen({super.key, 
     required this.title,
     required this.detail,
     required this.image1,
@@ -26,13 +26,13 @@ class ExerciseDetailScreen extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        backgroundColor: Color(0xFF0AC174),
+        backgroundColor: const Color(0xFF0AC174),
         centerTitle: true,
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xFF74AEEF), Color(0xFF4B88D2)],
             begin: Alignment.topLeft,
@@ -41,7 +41,7 @@ class ExerciseDetailScreen extends StatelessWidget {
         ),
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -56,7 +56,7 @@ class ExerciseDetailScreen extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(12),
                       child: Image.asset(
@@ -68,16 +68,16 @@ class ExerciseDetailScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Center(
                   child: Container(
                     alignment: Alignment.topLeft,
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black26,
                           blurRadius: 6,
@@ -93,7 +93,7 @@ class ExerciseDetailScreen extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         height: 1.5,
                         shadows: [
-                          Shadow(
+                          const Shadow(
                             blurRadius: 4,
                             color: Colors.black26,
                             offset: Offset(2, 2),

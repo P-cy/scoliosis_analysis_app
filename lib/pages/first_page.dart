@@ -5,6 +5,8 @@ import 'package:scoliosis_analysis_app/pages/infomation.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class FirstScreen extends StatefulWidget {
+  const FirstScreen({super.key});
+
   @override
   FirstScreenState createState() => FirstScreenState();
 }
@@ -20,26 +22,26 @@ class FirstScreenState extends State<FirstScreen> {
 
   final List<Widget> pages = [
     InformationScreen(),
-    CameraScreen(),
-    ExerciseScreen(),
+    const CameraScreen(),
+    const ExerciseScreen(),
   ];
 
   final List<PersistentBottomNavBarItem> items = [
     PersistentBottomNavBarItem(
-      icon: Icon(Icons.inbox_rounded,size: 30,),
+      icon: const Icon(Icons.inbox_rounded,size: 30,),
       title: 'ข้อมูล',
-      textStyle: TextStyle(
+      textStyle: const TextStyle(
           color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),inactiveColorPrimary: Colors.black,activeColorPrimary: Colors.green
     ),
     PersistentBottomNavBarItem(
-        icon: Icon(Icons.camera_alt_outlined,size: 30,color: Colors.white,),
+        icon: const Icon(Icons.camera_alt_outlined,size: 30,color: Colors.white,),
         title: 'วิเคราะห์',
-        textStyle: TextStyle(
+        textStyle: const TextStyle(
             color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),inactiveColorPrimary: Colors.black,activeColorPrimary: Colors.green),
     PersistentBottomNavBarItem(
-      icon: Icon(Icons.directions_walk_sharp,size: 30,),
+      icon: const Icon(Icons.directions_walk_sharp,size: 30,),
       title: 'กายภาพ',
-      textStyle: TextStyle(
+      textStyle: const TextStyle(
           color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),inactiveColorPrimary: Colors.black,activeColorPrimary: Colors.green
     ),
   ];

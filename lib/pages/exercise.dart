@@ -67,7 +67,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
             fontWeight: FontWeight.w400,
           ),
         ),
-        backgroundColor: Color(0xFF0AC174),
+        backgroundColor: const Color(0xFF0AC174),
         centerTitle: true,
       ),
       body: CustomScrollView(
@@ -76,20 +76,20 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
             delegate: SliverChildBuilderDelegate(
               (context, index) {
                 return Card(
-                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
                   elevation: 4,
                   child: Container(
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         colors: [Color(0xFF74AEEF), Color(0xFF4B88D2)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
                       borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black26,
                           blurRadius: 10,
@@ -116,7 +116,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                         style: GoogleFonts.ibmPlexSansThai(
                             fontSize: 16, color: Colors.white70),
                       ),
-                      trailing: Icon(
+                      trailing: const Icon(
                         Icons.format_align_justify_rounded,
                         color: Colors.white,
                       ),

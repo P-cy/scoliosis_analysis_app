@@ -1,4 +1,7 @@
 import 'dart:io';
+import 'package:flutter/services.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mlkit_image_labeling/google_mlkit_image_labeling.dart';
@@ -15,13 +18,25 @@ class _CameraScreenState extends State<CameraScreen> {
   File? image;
   late ImagePicker imagePicker;
   late ImageLabeler labeler;
+  String results = '';
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     imagePicker = ImagePicker();
-    ImageLabelerOptions options = ImageLabelerOptions(confidenceThreshold: 0.6);
+    // ImageLabelerOptions options = ImageLabelerOptions(confidenceThreshold: 0.6);
+    // labeler = ImageLabeler(options: options);
+    loadModel();
+  }
+
+  //โหลดโมเดลในโฟลเดอร์ assets/ml/ เข้ามาใช้งาน
+  loadModel() async {
+    final modelPath = await getModelPath('assets/ml/scoliosis_model.tflite');
+    final options = LocalLabelerOptions(
+      confidenceThreshold: 0.6,
+      modelPath: modelPath,
+    );
     labeler = ImageLabeler(options: options);
   }
 
@@ -49,7 +64,6 @@ class _CameraScreenState extends State<CameraScreen> {
     }
   }
 
-  String results = "";
   performImageLabeling() async {
     results = "";
     InputImage inputImage = InputImage.fromFile(image!);
@@ -61,8 +75,8 @@ class _CameraScreenState extends State<CameraScreen> {
       // ignore: unused_local_variable
       final int index = label.index;
       final double confidence = label.confidence;
-      print(text + "   " + confidence.toString());
-      results += text + "   " + confidence.toStringAsFixed(2) + "\n";
+      // print("$text   $confidence");
+      results += "$text   ${confidence.toStringAsFixed(2)}\n";
     }
 
     setState(() {
@@ -70,11 +84,24 @@ class _CameraScreenState extends State<CameraScreen> {
     });
   }
 
+  //ตั้งค่าการเข้าถึงตำแหน่งของโมเดลที่เทรนไว้
+  Future<String> getModelPath(String asset) async {
+  final path = '${(await getApplicationSupportDirectory()).path}/$asset';
+  await Directory(dirname(path)).create(recursive: true);
+  final file = File(path);
+  if (!await file.exists()) {
+    final byteData = await rootBundle.load(asset);
+    await file.writeAsBytes(byteData.buffer
+            .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+  }
+  return file.path;
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0AC174),
+        backgroundColor: const Color(0xFF0AC174),
         title: Text(
           "วิเคราะห์",
           style: GoogleFonts.ibmPlexSansThai(
@@ -92,12 +119,12 @@ class _CameraScreenState extends State<CameraScreen> {
               children: <Widget>[
                 Card(
                   color: Colors.grey,
-                  margin: EdgeInsets.all(10),
-                  child: Container(
+                  margin: const EdgeInsets.all(10),
+                  child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height / 2,
                     child: image == null
-                        ? Icon(
+                        ? const Icon(
                             Icons.image_outlined,
                             size: 50,
                           )
@@ -105,14 +132,14 @@ class _CameraScreenState extends State<CameraScreen> {
                   ),
                 ),
                 Card(
-                  margin: EdgeInsets.all(10),
-                  child: Container(
+                  margin: const EdgeInsets.all(10),
+                  child: SizedBox(
                     height: 100,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         InkWell(
-                          child: Icon(
+                          child: const Icon(
                             Icons.image_outlined,
                             size: 50,
                           ),
@@ -121,7 +148,7 @@ class _CameraScreenState extends State<CameraScreen> {
                           },
                         ),
                         InkWell(
-                          child: Icon(
+                          child: const Icon(
                             Icons.camera_alt_outlined,
                             size: 50,
                           ),
@@ -134,12 +161,12 @@ class _CameraScreenState extends State<CameraScreen> {
                   ),
                 ),
                 Card(
+                    margin: const EdgeInsets.all(10),
                     child: Container(
-                  child: Text(results,style: TextStyle(fontSize: 24),),
                   width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
+                  child: Text(results,style: const TextStyle(fontSize: 24),),
                 ),
-                margin: EdgeInsets.all(10),
               ),
               ]),
         ),

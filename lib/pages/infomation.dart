@@ -11,7 +11,9 @@ class InformationScreen extends StatelessWidget {
     {'image': 'assets/img/scoliosis.png', 'title': 'โรคกระดูกสันหลังคด'},
   ];
 
-  final colorg = Color(0xFF0AC174);
+  final colorg = const Color(0xFF0AC174);
+
+  InformationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,14 +43,14 @@ class InformationScreen extends StatelessWidget {
                 fit: StackFit.expand,
                 children: [
                   Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.vertical(
                         bottom: Radius.circular(300),
                       ),
                     ),
                     child: ClipRRect(
                       borderRadius:
-                          BorderRadius.vertical(bottom: Radius.circular(1000)),
+                          const BorderRadius.vertical(bottom: Radius.circular(1000)),
                       child: ColorFiltered(
                         colorFilter: ColorFilter.mode(
                           Colors.white.withOpacity(0.3),
@@ -65,7 +67,7 @@ class InformationScreen extends StatelessWidget {
                     left: 16,
                     bottom: 16,
                     child: Container(
-                      padding: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(1),
                         borderRadius: BorderRadius.circular(15),
@@ -73,7 +75,7 @@ class InformationScreen extends StatelessWidget {
                           color: Colors.blueAccent,
                           width: 2,
                         ),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             color: Colors.black38,
                             offset: Offset(0, 6),
@@ -92,7 +94,7 @@ class InformationScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 4),
+                          const SizedBox(height: 4),
                           Text(
                             'กระดูกสันหลังเป็นโครงสร้างสำคัญที่ช่วยพยุงร่างกาย\n'
                             'และปกป้องไขสันหลัง ซึ่งเป็นส่วนของระบบประสาทที่\n'
@@ -110,7 +112,7 @@ class InformationScreen extends StatelessWidget {
               ),
             ),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: SizedBox(
               height: 8,
             ),
@@ -129,26 +131,26 @@ class InformationScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SpineInfoScreen()),
+                                builder: (context) => const SpineInfoScreen()),
                           );
                         } else if (index == 1) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ScoliosisInfoScreen()),
+                                builder: (context) => const ScoliosisInfoScreen()),
                           );
                         }
                       },
                       child: Container(
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
+                          gradient: const LinearGradient(
                             colors: [Color(0xFF74AEEF), Color(0xFF4B88D2)],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
                           borderRadius: BorderRadius.circular(12),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               blurRadius: 10,
@@ -168,7 +170,7 @@ class InformationScreen extends StatelessWidget {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            SizedBox(width: 12),
+                            const SizedBox(width: 12),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -181,7 +183,7 @@ class InformationScreen extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  SizedBox(height: 6),
+                                  const SizedBox(height: 6),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -193,7 +195,7 @@ class InformationScreen extends StatelessWidget {
                                           fontSize: 16,
                                         ),
                                       ),
-                                      Icon(
+                                      const Icon(
                                         Icons.format_align_justify_rounded,
                                         color: Colors.white,
                                       ),
