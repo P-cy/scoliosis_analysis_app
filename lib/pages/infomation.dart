@@ -1,107 +1,103 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:scoliosis_analysis_app/pages/info_screen.dart';
 
-class InformationScreen extends StatelessWidget {
-  final List<Map<String, String>> listinfo = [
-    {
-      'image': 'assets/img/spine.png',
-      'title': 'กระดูกสันหลัง',
-    },
-    {'image': 'assets/img/scoliosis.png', 'title': 'โรคกระดูกสันหลังคด'},
-  ];
+class InformationScreen extends StatefulWidget {
+  const InformationScreen({super.key});
 
-  final colorg = const Color(0xFF0AC174);
+  @override
+  State<InformationScreen> createState() => _InformationScreenState();
+}
 
-  InformationScreen({super.key});
+final PageController _pageController = PageController();
+int _currentPage = 0;
 
+class _InformationScreenState extends State<InformationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[100],
-      appBar: AppBar(
-        backgroundColor: colorg,
-        title: Text(
-          "ข้อมูล",
-          style: GoogleFonts.ibmPlexSansThai(
-            color: Colors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        centerTitle: true,
-      ),
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            pinned: true,
-            floating: false,
-            centerTitle: true,
-            expandedHeight: 240,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Stack(
-                fit: StackFit.expand,
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.topRight,
+                  colors: [
+                    const Color.fromARGB(255, 11, 216, 243),
+                    Colors.blue.shade900,
+                  ],
+                ),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 42),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.vertical(
-                        bottom: Radius.circular(300),
-                      ),
-                    ),
-                    child: ClipRRect(
-                      borderRadius:
-                          const BorderRadius.vertical(bottom: Radius.circular(1000)),
-                      child: ColorFiltered(
-                        colorFilter: ColorFilter.mode(
-                          Colors.white.withOpacity(0.3),
-                          BlendMode.srcATop,
-                        ),
-                        child: Image.asset(
-                          'assets/img/spine.png',
-                          fit: BoxFit.fill,
-                        ),
-                      ),
+                  Text(
+                    'ยินดีต้อนรับ...',
+                    style: GoogleFonts.ibmPlexSansThai(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
-                  Positioned(
-                    left: 16,
-                    bottom: 16,
-                    child: Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(1),
-                        borderRadius: BorderRadius.circular(15),
-                        border: Border.all(
-                          color: Colors.blueAccent,
-                          width: 2,
-                        ),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black38,
-                            offset: Offset(0, 6),
-                            blurRadius: 10,
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                  SizedBox(height: 20),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32),
+                    ),
+                    elevation: 4,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(
-                            'ข้อมูลเกี่ยวกับกระดูกสันหลัง',
-                            style: GoogleFonts.ibmPlexSansThai(
-                              color: Colors.black87,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
+                          ClipRRect(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(32),
+                              bottom: Radius.circular(32),
+                            ),
+                            child: Image.asset(
+                              'assets/img/back-bone.jpg',
+                              height: 150,
+                              width: 175,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                          const SizedBox(height: 4),
-                          Text(
-                            'กระดูกสันหลังเป็นโครงสร้างสำคัญที่ช่วยพยุงร่างกาย\n'
-                            'และปกป้องไขสันหลัง ซึ่งเป็นส่วนของระบบประสาทที่\n'
-                            'เชื่อมต่อสมองกับส่วนต่าง ๆ ของร่างกาย',
-                            style: GoogleFonts.ibmPlexSansThai(
-                              color: Colors.black54,
-                              fontSize: 14,
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'โรคกระดูก \nสันหลังคด',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 8),
+                                  Text(
+                                    'ภัยใกล้ตัว...',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey[700],
+                                    ),
+                                  ),
+                                  SizedBox(height: 8),
+                                  TextButton(
+                                    onPressed: () {
+                                      // ฟังก์ชันเมื่อกดปุ่ม "ข้อมูลเพิ่มเติม"
+                                    },
+                                    child: Text(
+                                      'ข้อมูลเพิ่มเติม >',
+                                      style: TextStyle(color: Colors.blue),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -111,111 +107,367 @@ class InformationScreen extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-          const SliverToBoxAdapter(
-            child: SizedBox(
-              height: 8,
+            SizedBox(
+              height: 32,
             ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 16.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: GestureDetector(
-                      onTap: () {
-                        if (index == 0) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SpineInfoScreen()),
-                          );
-                        } else if (index == 1) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ScoliosisInfoScreen()),
-                          );
-                        }
+            Divider(
+              color: Colors.grey.shade900,
+              thickness: 1,
+              indent: 0,
+              endIndent: 0,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'แนวทางสุขภาพ',
+                    style: GoogleFonts.montserrat(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey.shade700,
+                    ),
+                  ),
+                  Container(
+                    height: 200,
+                    child: PageView(
+                      scrollDirection: Axis.horizontal,
+                      controller: _pageController,
+                      onPageChanged: (page) {
+                        setState(() {
+                          _currentPage = page;
+                        });
                       },
-                      child: Container(
-                        padding: const EdgeInsets.all(16),
+                      children: [
+                        _buildHealthCard('assets/img/slide.jpg',
+                            'แนวทางปฏิบัติ\nเมื่อพบภาวะเสี่ยง'),
+                        _buildHealthCard('assets/img/slide2.jpg',
+                            'การกายภาพบำบัด\nด้วยตนเอง'),
+                        _buildHealthCard(
+                            'assets/img/slide3.jpg', 'วิเคราะห์\nภาวะเสี่ยง'),
+                        _buildHealthCard('assets/img/slide4.jpg',
+                            'แนวการทางป้องกัน\nการเกิดโรคกระดูก\nสันหลังคด'),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      4,
+                      (index) => Container(
+                        margin: EdgeInsets.symmetric(horizontal: 4),
+                        width: 8,
+                        height: 8,
                         decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [Color(0xFF74AEEF), Color(0xFF4B88D2)],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.circular(12),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 10,
-                              offset: Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                listinfo[index]['image']!,
-                                width: 125,
-                                height: 90,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    listinfo[index]['title']!,
-                                    style: GoogleFonts.ibmPlexSansThai(
-                                      color: Colors.white,
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 6),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "รายละเอียดเพิ่มเติม",
-                                        style: GoogleFonts.ibmPlexSansThai(
-                                          color: Colors.white70,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      const Icon(
-                                        Icons.format_align_justify_rounded,
-                                        color: Colors.white,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                          shape: BoxShape.circle,
+                          color:
+                              _currentPage == index ? Colors.blue : Colors.grey,
                         ),
                       ),
                     ),
                   ),
-                );
-              },
-              childCount: listinfo.length,
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 32,
+            ),
+            Divider(
+              color: Colors.grey.shade900,
+              thickness: 1,
+              indent: 0,
+              endIndent: 0,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'พบแพทย์ และ คู่มือการใช้งาน',
+                    style: GoogleFonts.montserrat(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey.shade700,
+                    ),
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.9),
+                              borderRadius: BorderRadius.circular(32),
+                              border: Border.all(
+                                color: Colors.grey.shade300,
+                                width: 1.5,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 10,
+                                  offset: Offset(0, 5),
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(32),
+                                    bottom: Radius.circular(32),
+                                  ),
+                                  child: Image.asset(
+                                    'assets/img/doctor.jpg',
+                                    height: 150,
+                                    width: 75,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'โรงพยาบาล\nใกล้คุณ',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          'คลิกเพื่อไปแผนที่ >',
+                                          style: TextStyle(color: Colors.blue),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Column(
+                                  children: [
+                                    Padding(
+                                        padding: const EdgeInsets.all(8),
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.white
+                                                    .withOpacity(0.9),
+                                                borderRadius:
+                                                    BorderRadius.circular(32),
+                                                border: Border.all(
+                                                  color: Colors.grey.shade300,
+                                                  width: 1.5,
+                                                ),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.grey
+                                                        .withOpacity(0.5),
+                                                    spreadRadius: 2,
+                                                    blurRadius: 10,
+                                                    offset: Offset(0, 5),
+                                                  ),
+                                                ],
+                                              ),
+                                              child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.vertical(
+                                                        top:
+                                                            Radius.circular(32),
+                                                        bottom:
+                                                            Radius.circular(32),
+                                                      ),
+                                                      child: Image.asset(
+                                                        'assets/img/docs.jpg',
+                                                        height: 75,
+                                                        width: 75,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              16.0),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            'แบบประเมิน\nหลังใช้งาน\nแอปพลิเคชัน',
+                                                            style: TextStyle(
+                                                              fontSize: 16,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ])),
+                                        )),
+                                    Padding(
+                                        padding: const EdgeInsets.all(8),
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.white
+                                                    .withOpacity(0.9),
+                                                borderRadius:
+                                                    BorderRadius.circular(32),
+                                                border: Border.all(
+                                                  color: Colors.grey.shade300,
+                                                  width: 1.5,
+                                                ),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.grey
+                                                        .withOpacity(0.5),
+                                                    spreadRadius: 2,
+                                                    blurRadius: 10,
+                                                    offset: Offset(0, 5),
+                                                  ),
+                                                ],
+                                              ),
+                                              child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.vertical(
+                                                        top:
+                                                            Radius.circular(32),
+                                                        bottom:
+                                                            Radius.circular(32),
+                                                      ),
+                                                      child: Image.asset(
+                                                        'assets/img/manual.jpg',
+                                                        height: 75,
+                                                        width: 75,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              16.0),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            'คู่มือการใช้งาน\nแอปพลิเคชัน',
+                                                            style: TextStyle(
+                                                              fontSize: 16,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ])),
+                                        ))
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )
+          ]),
+        ));
+  }
+}
+
+Widget _buildHealthCard(String imagePath, String title) {
+  return Padding(
+    padding: const EdgeInsets.all(8),
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.9),
+        borderRadius: BorderRadius.circular(32),
+        border: Border.all(
+          color: Colors.grey.shade300,
+          width: 1.5,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 10,
+            offset: Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(32),
+              bottom: Radius.circular(32),
+            ),
+            child: Image.asset(
+              imagePath,
+              height: 150,
+              width: 175,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 20),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'ข้อมูลเพิ่มเติม >',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
 }
