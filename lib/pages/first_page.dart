@@ -1,8 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scoliosis_analysis_app/pages/camera.dart';
 import 'package:scoliosis_analysis_app/pages/exercise.dart';
 import 'package:scoliosis_analysis_app/pages/infomation.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
@@ -14,70 +14,81 @@ class FirstScreen extends StatefulWidget {
 class FirstScreenState extends State<FirstScreen> {
   int _selectedIndex = 0;
 
-  void navBottomBar(int index) {
+  void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
-  final List<Widget> pages = [
+  final List<Widget> _pages = [
     InformationScreen(),
-    const CameraScreen(),
-    const ExerciseScreen(),
-  ];
-
-  final List<PersistentBottomNavBarItem> items = [
-    PersistentBottomNavBarItem(
-      icon: const Icon(Icons.inbox_rounded,size: 30,),
-      title: 'ข้อมูล',
-      textStyle: const TextStyle(
-          color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),inactiveColorPrimary: Colors.black,activeColorPrimary: Colors.green
-    ),
-    PersistentBottomNavBarItem(
-        icon: const Icon(Icons.camera_alt_outlined,size: 30,color: Colors.white,),
-        title: 'วิเคราะห์',
-        textStyle: const TextStyle(
-            color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),inactiveColorPrimary: Colors.black,activeColorPrimary: Colors.green),
-    PersistentBottomNavBarItem(
-      icon: const Icon(Icons.directions_walk_sharp,size: 30,),
-      title: 'กายภาพ',
-      textStyle: const TextStyle(
-          color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),inactiveColorPrimary: Colors.black,activeColorPrimary: Colors.green
-    ),
+    CameraScreen(),
+    ExerciseScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[_selectedIndex],
-      bottomNavigationBar: PersistentTabView(
-        context,
-        screens: pages,
-        items: items,
-        decoration: NavBarDecoration(borderRadius: BorderRadius.circular(1)),
-        navBarStyle: NavBarStyle.style15,
-        handleAndroidBackButtonPress: true, // Default is true.
-        resizeToAvoidBottomInset:
-            true, // This needs to be true if you want to move up the screen on a non-scrollable screen when keyboard appears. Default is true.
-        stateManagement: true, // Default is true.
-        hideNavigationBarWhenKeyboardAppears: true,
-        popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
-        padding: const EdgeInsets.only(top: 8),
-        animationSettings: const NavBarAnimationSettings(
-          navBarItemAnimation: ItemAnimationSettings(
-            // Navigation Bar's items animation properties.
-            duration: Duration(milliseconds: 400),
-            curve: Curves.ease,
-          ),
-          screenTransitionAnimation: ScreenTransitionAnimationSettings(
-            // Screen transition animation on change of selected tab.
-            animateTabTransition: true,
-            duration: Duration(milliseconds: 200),
-            screenTransitionAnimationType: ScreenTransitionAnimationType.fadeIn,
-          ),
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              offset: const Offset(0, -5),
+            ),
+          ],
         ),
-        confineToSafeArea: true,
-        navBarHeight: kBottomNavigationBarHeight,
+        child: BottomNavigationBar(
+          items: <BottomNavigationBarItem>[
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.inbox_rounded),
+              label: 'ข้อมูล',
+            ),
+            BottomNavigationBarItem(
+              icon: Container(
+                height: 75,
+                width: 75,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.blue.shade900,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                    ),
+                  ],
+                ),
+                child: const Icon(
+                  Icons.camera_alt_outlined,
+                  size: 35,
+                  color: Colors.white,
+                ),
+              ),
+              label: 'วิเคราะห์',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.directions_walk_sharp),
+              label: 'กายภาพ',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey,
+          showUnselectedLabels: true,
+          type: BottomNavigationBarType.fixed,
+          selectedLabelStyle: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+          unselectedLabelStyle: const TextStyle(
+            fontSize: 16,
+          ),
+          elevation: 0,
+        ),
       ),
     );
   }

@@ -1,205 +1,239 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SpineInfoScreen extends StatelessWidget {
+class SpineInfoScreen extends StatefulWidget {
   const SpineInfoScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "ข้อมูลเกี่ยวกับกระดูกสันหลัง",
-          style: GoogleFonts.ibmPlexSansThai(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.white
-          ),
-        ),
-        backgroundColor: const Color(0xFF0AC174),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'ข้อมูลทั่วไปเกี่ยวกับกระดูกสันหลังคด',
-                style: GoogleFonts.ibmPlexSansThai(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal[800]),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'คนที่มีกระดูกสันหลังปกติจะมีโครงสร้างสันหลังที่เป็นแนวตรงในมุมด้านข้าง และจะมีโค้งตามธรรมชาติในมุมมองด้านข้างอยู่ใน 3 ส่วน คือ ส่วนคอ (cervical curve) ส่วนอก (thoracic curve) และส่วนหลังล่าง (lumbar curve) ซึ่งเป็นการโค้งที่มีวัตถุประสงค์เพื่อช่วยในการรองรับน้ำหนักของร่างกายและลดแรงกระแทก',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'ในคนที่มีกระดูกสันหลังปกติจะไม่เกิดการคดเคี้ยวของกระดูกสันหลังในแนวด้านข้าง ทำให้ลำตัวและรูปร่างดูสมดุล และไม่มีความผิดปกติในการเคลื่อนไหวหรือทำกิจกรรมประจำวัน',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'อาการของคนที่ไม่เป็นกระดูกสันหลังคด',
-                style: GoogleFonts.ibmPlexSansThai(
-                    fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'คนที่ไม่เป็นกระดูกสันหลังคดจะไม่มีอาการผิดปกติใด ๆ ที่เกี่ยวข้องกับกระดูกสันหลังโดยตรง อย่างไรก็ตาม หากมีอาการปวดหลังหรือรู้สึกไม่สบาย อาจเกิดจากสาเหตุอื่น เช่น',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-              Text(
-                '1. การนั่งหรือยืนท่าทางไม่เหมาะสม - อาจทำให้เกิดการเมื่อยล้าหรือปวดกล้ามเนื้อ\n2. การบาดเจ็บจากการทำกิจกรรม - เช่น การยกของหนักหรือการเคลื่อนไหวที่ผิดวิธี\n3. การเสื่อมของหมอนรองกระดูก - ซึ่งเป็นกระบวนการธรรมชาติที่เกิดขึ้นตามอายุ\n4. การกดทับเส้นประสาท - แม้ว่ากระดูกสันหลังจะไม่คด แต่เส้นประสาทอาจถูกกดทับจากสาเหตุอื่น ๆ ได้',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'การวินิจฉัย',
-                style: GoogleFonts.ibmPlexSansThai(
-                    fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'แม้ว่าคนที่มีกระดูกสันหลังปกติจะไม่จำเป็นต้องมีการวินิจฉัยเฉพาะทาง แต่ในกรณีที่มีอาการปวดหลังหรือมีความกังวลเกี่ยวกับสุขภาพกระดูกสันหลัง แพทย์อาจทำการวินิจฉัยด้วยวิธีต่าง ๆ เช่น',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-              Text(
-                '1. การชักประวัติและตรวจร่างกาย\n2. การเอกซเรย์ (X-ray)\n3. MRI หรือ CT Scan',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'การป้องกันปัญหากระดูกสันหลัง',
-                style: GoogleFonts.ibmPlexSansThai(
-                    fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'ถึงแม้ว่าคนที่มีกระดูกสันหลังปกติจะไม่มีปัญหาด้านโครงสร้าง แต่ยังควรดูแลสุขภาพกระดูกสันหลังเพื่อป้องกันปัญหาในอนาคต ดังนี้',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-              Text(
-                '1. การนั่งและยืนในท่าทางที่ถูกต้อง\n2. ออกกำลังกายเพื่อเสริมสร้างกล้ามเนื้อหลังและหน้าท้อง\n3. การยกของอย่างถูกวิธี\n4. พักผ่อนและเปลี่ยนท่าทางบ่อย ๆ\n5. นอนบนที่นอนที่รองรับกระดูกสันหลัง',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  State<SpineInfoScreen> createState() => _SpineInfoScreenState();
 }
 
-class ScoliosisInfoScreen extends StatelessWidget {
-  const ScoliosisInfoScreen({super.key});
-
+class _SpineInfoScreenState extends State<SpineInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ข้อมูลเกี่ยวกับโรคกระดูกสันหลังคด',
-        style: GoogleFonts.ibmPlexSansThai(
-        fontSize: 24, fontWeight: FontWeight.bold,color: Colors.white)),
-        backgroundColor: const Color(0xFF0AC174),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'สันหลังคด (Scoliosis)',
-                style: GoogleFonts.ibmPlexSansThai(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.teal[800],
+        extendBodyBehindAppBar: true,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(80),
+          child: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xFF0BD8F3), Color(0xFF004aad)],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+              ),
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(40),
+              ),
+            ),
+            child: SafeArea(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: const CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: Icon(Icons.close, color: Colors.black),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 10),
-              Text(
-                'สันหลังคดคือภาวะที่กระดูกสันหลังมีความโค้งผิดปกติ ซึ่งโดยทั่วไปกระดูกสันหลังของคนปกติจะเป็นเส้นตรงเมือมองจากด้านหน้าและด้านหลัง แต่ในผู้ที่มีสันหลังคด กระดูกสันหลังจะโค้งไปทางด้านข้างเป็นรูปตัว "C" หรือ "S" โดยสามารถเกิดขึ้นได้ในระดับของกระดูกสันหลังต่าง ๆ ตั้งแต่บริเวณทรวงอกไปจนถึงเอว',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'ข้อมูลทั่วไป:',
-                style: GoogleFonts.ibmPlexSansThai(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                '- พบได้ในทุกเพศทุกวัย แต่พบได้บ่อยในเด็กวัยรุ่นหญิง\n- สันหลังคดอาจเป็นภาวะที่เกิดขึ้นตั้งแต่แรกเกิด (congenital scoliosis) หรือพัฒนาขึ้นในช่วงวัยรุ่น (adolescent idiopathic scoliosis)\n- อาจมีระดับความรุนแรงแตกต่างกันไปตั้งแต่โค้งเล็กน้อยจนถึงโค้งรุนแรงที่ส่งผลต่อการทำงานของอวัยวะต่าง ๆ',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'สาเหตุ:',
-                style: GoogleFonts.ibmPlexSansThai(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                '- ไม่ทราบสาเหตุที่ชัดเจน: กรณีส่วนใหญ่ของสันหลังคดเกิดขึ้นโดยไม่มีสาเหตุที่แน่ชัด (idiopathic scoliosis)\n- กรรมพันธุ์: อาจมีปัจจัยทางพันธุกรรมเกี่ยวข้อง\n- ความผิดปกติแต่กำเนิด: ในบางกรณีเกิดจากความผิดปกติของกระดูกสันหลังตั้งแต่กำเนิด\n- การบาดเจ็บหรือโรค: การบาดเจ็บที่กระดูกสันหลังหรือโรคเนื้อเยื่อเกี่ยวพัน ก็อาจทำให้เกิดสันหลังคดได้',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'อาการ:',
-                style: GoogleFonts.ibmPlexSansThai(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                '- มักไม่แสดงอาการในระยะแรก แต่เมื่อสันหลังคดเริ่มชัดเจน อาจมีอาการเช่น\nไหล่หรือสะโพกไม่เท่ากัน \nตัวเอียงไปด้านหนึ่งเมื่อยืนตรง \nอาการปวดหลังหรือปวดที่กระดูกสันหลัง \nและในบางกรณีอาจหายใจลำบากหากการโค้งรุนแรงมาก',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'การวินิจฉัย:',
-                style: GoogleFonts.ibmPlexSansThai(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                '- การตรวจร่างกาย: แพทย์จะตรวจสอบการวางตัวของกระดูกสันหลัง และสังเกตความสมดุลของไหล่และสะโพก\n- การถ่ายภาพเอ็กซเรย์: ใช้เพื่อดูความรุนแรงและมุมของการโค้ง\n- MRI หรือ CT Scan: อาจใช้ในบางกรณีเพื่อหาสาเหตุที่เป็นไปได้ เช่น ความผิดปกติของเส้นประสาทหรือเนื้อเยื่อ',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'การรักษา:',
-                style: GoogleFonts.ibmPlexSansThai(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                '1. การติดตามอาการ: ในกรณีที่การโค้งมีความรุนแรงน้อย แพทย์อาจแนะนำให้ติดตามดูอาการเป็นระยะ โดยไม่จำเป็นต้องรักษาทันที\n2. การใส่เสื้อพยุง (Brace): หากการโค้งยังอยู่ในช่วงวัยเจริญเติบโต การใส่เสื้อพยุงอาจช่วยหยุดหรือชะลอการโค้งที่มากขึ้น\n3. การผ่าตัด: ในกรณีที่การโค้งมีความรุนแรง หรือส่งผลต่อการทำงานของอวัยวะภายใน แพทย์อาจแนะนำให้ผ่าตัดเพื่อปรับแนวกระดูกสันหลัง\n4. การทำกายภาพบำบัด: การออกกำลังกายที่เหมาะสมและการทำกายภาพบำบัดอาจช่วยลดความเจ็บปวด และเสริมสร้างกล้ามเนื้อรอบกระดูกสันหลังให้แข็งแรง',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'การป้องกัน:',
-                style: GoogleFonts.ibmPlexSansThai(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                '- ไม่มีวิธีการป้องกันที่แน่นอน: เนื่องจากสาเหตุของสันหลังคดส่วนใหญ่มักไม่ทราบแน่ชัด แต่การรักษาร่างกายให้แข็งแรง การตรวจร่างกายเป็นประจำในช่วงวัยเจริญเติบโต อาจช่วยตรวจพบภาวะนี้ในระยะแรกเริ่ม',
-                style: GoogleFonts.ibmPlexSansThai(fontSize: 16),
-              ),
-            ],
+            ),
           ),
         ),
-      ),
-    );
+        body: SingleChildScrollView(
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.topRight,
+                  colors: [
+                    const Color(0xFF0BD8F3),
+                    const Color(0xFF004aad),
+                  ],
+                ),
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(40),
+                )),
+            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 1),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const SizedBox(height: 20),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 100, bottom: 40),
+                    child: Card(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(32),
+                      ),
+                      elevation: 4,
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Center(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(40),
+                                child: Image.asset(
+                                  'assets/img/back-bone.jpg',
+                                  height: 180,
+                                  width: 270,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            Text(
+                              'โรคกระดูก สันหลังคด',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.sarabun(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              'ปัญหาที่ควรได้รับการรักษา...',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.sarabun(
+                                fontSize: 14,
+                                color: Colors.grey[700],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ]),
+          ),
+          const SizedBox(height: 20),
+          Center(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  color: Colors.blue,
+                  width: 2,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'สารบัญ',
+                      style: GoogleFonts.sarabun(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      '1. สาเหตุการเกิดโรคกระดูกสันหลังคด\n'
+                      '2. กระดูกสันหลังคดและผลที่เกิดขึ้น\n'
+                      '3. สัญญาณเบื้องต้นของโรคกระดูกสันหลังคด\n'
+                      '4. การวินิจฉัยและป้องกันโรคกระดูกสันหลังคด',
+                      style: GoogleFonts.sarabun(
+                        fontSize: 14,
+                        color: Colors.grey[700],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          // เนื้อหาเพิ่มเติม
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '1. สาเหตุ การเกิดโรคกระดูกสันหลังคด',
+                  style: GoogleFonts.sarabun(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  '        กระดูกสันหลังคด เป็นโรคที่สามารถเกิดได้ในทุกวัย และเกิดได้จากหลายๆ สาเหตุ ดังนี้',
+                  style: GoogleFonts.sarabun(
+                    fontSize: 14,
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  '1. ความผิดปกติของการเจริญเติบโตกระดูกสันหลังแต่กำเนิด (Congenital Scoliosis) เป็นความผิดปกติของกระดูกสันหลังตั้งแต่ก่อนคลอด โดยเป็นความผิดปกติจากพัฒนาการของทารกในครรภ์ ไม่ว่าจะเป็นการสร้างของกระดูกสันหลังเพียงด้านเดียว หรือการสร้างของกระดูกสันหลังที่ไม่แยกจากกัน ส่งผลให้เกิดกระดูกสันหลังคดตั้งแต่กำเนิด ซึ่งกระดูกสันหลังคดในลักษณะนี้ก่อให้เกิดความผิดปกติมาก ผู้ป่วยมักจะต้องรีบเข้ารับการรักษา',
+                  style: GoogleFonts.sarabun(
+                    fontSize: 14,
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  '2. ความผิดปกติของระบบประสาทกล้ามเนื้อ (Neuromuscular Scoliosis) เป็นกระดูกสันหลังคดที่เกิดจากโรคทางระบบประสาทหรือกล้ามเนื้อของคนไข้ที่มีความผิดปกติ ทำให้เกิดความไม่สมดุลต่อกระดูกสันหลัง ส่งผลให้กระดูกสันหลังคด ที่พบบ่อย เช่น คนไข้มีอาการขาดเลือดทางสมองแต่กำเนิด (Cerebral Palsy) ทำให้เกิดโรคกระดูกสันหลังคดตอนโตได้ หรือคนไข้ที่เป็นโรคกล้ามเนื้ออ่อนแรง (Muscular Dystrophy) สามารถทำให้เกิดโรคกระดูกสันหลังคดได้',
+                  style: GoogleFonts.sarabun(
+                    fontSize: 14,
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  '3. ความเสื่อมของข้อกระดูก (Degenerative Scoliosis) เป็นสาเหตุที่พบได้บ่อยที่สุดของคนไข้สูงอายุที่มีภาวะกระดูกสันหลังคด โดยสาเหตุกลุ่มนี้เกิดจากความเสื่อมของข้อกระดูกสันหลัง หรือหมอนรองกระดูกสันหลังด้านซ้ายกับขวาไม่เท่ากัน ทำให้เกิดการทรุดตัวของข้อกระดูกสันหลังด้านซ้ายขวาไม่เท่ากัน จึงทำให้เกิดกระดูกสันหลังคด',
+                  style: GoogleFonts.sarabun(
+                    fontSize: 14,
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  '4. กระดูกสันหลังคดแบบไม่ทราบสาเหตุ (Idiopathic Scoliosis) เป็นสาเหตุที่พบได้บ่อยที่สุดของคนไข้เด็กที่มีภาวะกระดูกสันหลังคด โดยกลุ่มนี้จะไม่ทราบสาเหตุที่แน่ชัด ไม่พบความผิดปกติของกระดูก หมอนรองกระดูก หรือกล้ามเนื้อ การวินิจฉัยกระดูกสันหลังคดในเด็กกลุ่มนี้จะวินิจฉัยโดยต้องค้นหาสาเหตุอื่นๆ ก่อน โดยถ้าไม่พบความผิดปกติจากสาเหตุอื่นๆ ข้างต้น จะจัดผู้ป่วยกระดูกสันหลังคดในเด็กเข้าในกลุ่มนี้',
+                  style: GoogleFonts.sarabun(
+                    fontSize: 14,
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  '2.กระดูกสันหลังคดและผลที่เกิดขึ้น',
+                  style: GoogleFonts.sarabun(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  '        กระดูกสันหลังคดเป็นโรคที่สามารถเกิดอาการขึ้นได้กับคนทุกกลุ่ม ตั้งแต่เด็กเล็ก ผู้ใหญ่ ไปจนถึงผู้สูงอายุ ซึ่งในแต่ละช่วงวัยก็จะมีปัจจัยต่างๆ ที่ทำให้เกิดปัญหาอาการกระดูกสันหลังคดต่างกันไป\n \nในเด็กเล็ก (0-5 ปี) มักจะเกิดจากปัญหากระดูกสันหลังคด ที่เกิดจากความผิดปกติแต่กำเนิดของกระดูก (Congenital Scoliosis) โดยกลุ่มนี้มักจะสังเกตได้ตั้งแต่อายุน้อย หรืออาจพบได้โดยบังเอิญจากภาพถ่ายรังสีส่วนอื่นๆ ซึ่งเป็นกลุ่มที่เมื่อพบแล้ว ต้องหาความผิดปกติของระบบอื่นๆ ที่อาจพบร่วมด้วย เช่น ความผิดปกติของไต ความผิดปกติของหัวใจ เป็นต้น\n \nในวัยรุ่น (10-15 ปี) มักจะพบโรคกระดูกสันหลังคดแบบไม่ทราบสาเหตุ (Idiopathic Scoliosis) มากที่สุด โดยในช่วงที่เด็กกำลังจะเข้าสู่วัยรุ่น จะเป็นช่วงที่กระดูกจะเจริญเติบโตและเด็กจะมีส่วนสูงเพิ่มขึ้นอย่างรวดเร็ว ในช่วงนี้จะเป็นช่วงที่ผู้ปกครองต้องเฝ้าระวัง เนื่องจากจะเป็นช่วงเวลาที่กระดูกสันหลังคดกลุ่มนี้จะมีมุมที่เพิ่มมากขึ้นได้เร็ว\n \nในผู้สูงอายุ (> 50 ปี) ส่วนใหญ่แล้วเกิดปัญหากระดูกสันหลังคด มาจากสาเหตุกระดูกสันหลังเสื่อม เนื่องจากข้อกระดูกที่ใช้งานมานานเกิดการเสื่อมสภาพ โดยเมื่อข้อกระดูกด้านซ้ายกับขวา เสื่อมสภาพไม่เท่ากัน หรือเกิดการทรุดของหมอนรองกระดูกไม่เท่ากัน จะส่งผลให้เกิดโรคกระดูกสันหลังคดจากความเสื่อม ที่สำคัญคือ ผู้ป่วยกลุ่มนี้มักจะพบภาวะกระดูกสันหลังกดทับเส้นประสาทร่วมด้วย ซึ่งนอกจากอาการกระดูกสันหลังคดแล้ว ยังพบอาการจากโรคกระดูกทับเส้นประสาท เช่น ปวดหลัง และร้าวลงขา ขาชา อ่อนแรง ร่วมด้วย ',
+                  style: GoogleFonts.sarabun(
+                    fontSize: 14,
+                    color: Colors.grey[700],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ])));
   }
 }
