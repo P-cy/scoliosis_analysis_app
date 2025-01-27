@@ -86,31 +86,45 @@ class _CameraScreenState extends State<CameraScreen> {
 
   //ตั้งค่าการเข้าถึงตำแหน่งของโมเดลที่เทรนไว้
   Future<String> getModelPath(String asset) async {
-  final path = '${(await getApplicationSupportDirectory()).path}/$asset';
-  await Directory(dirname(path)).create(recursive: true);
-  final file = File(path);
-  if (!await file.exists()) {
-    final byteData = await rootBundle.load(asset);
-    await file.writeAsBytes(byteData.buffer
-            .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+    final path = '${(await getApplicationSupportDirectory()).path}/$asset';
+    await Directory(dirname(path)).create(recursive: true);
+    final file = File(path);
+    if (!await file.exists()) {
+      final byteData = await rootBundle.load(asset);
+      await file.writeAsBytes(byteData.buffer
+          .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+    }
+    return file.path;
   }
-  return file.path;
-}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0AC174),
-        title: Text(
-          "วิเคราะห์",
-          style: GoogleFonts.ibmPlexSansThai(
-            color: Colors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.w400,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        toolbarHeight: 60,
+        centerTitle: true,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [
+                Color(0xFF0BD8F3),
+                Color(0xFF004aad),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 10,
+                offset: const Offset(0, 5),
+              ),
+            ],
           ),
         ),
-        centerTitle: true,
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -161,13 +175,16 @@ class _CameraScreenState extends State<CameraScreen> {
                   ),
                 ),
                 Card(
-                    margin: const EdgeInsets.all(10),
-                    child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.all(10),
-                  child: Text(results,style: const TextStyle(fontSize: 24),),
+                  margin: const EdgeInsets.all(10),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      results,
+                      style: const TextStyle(fontSize: 24),
+                    ),
+                  ),
                 ),
-              ),
               ]),
         ),
       ),

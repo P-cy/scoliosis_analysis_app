@@ -42,6 +42,14 @@ dependencies:
   google_mlkit_image_labeling: ^0.13.0
   google_fonts: ^6.2.1
   flutter_launcher_icons: ^0.14.2
+  font_awesome_flutter: ^10.8.0
+  
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/img/logo_foreground.png"
+  adaptive_icon_foreground: "assets/img/logo_foreground.png"
+  adaptive_icon_background: "#ffffff"
 
 dev_dependencies:
   flutter_test:
@@ -54,10 +62,6 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
 
-flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/img/logo.jpg"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

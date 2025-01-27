@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoliosis_analysis_app/pages/camera.dart';
 import 'package:scoliosis_analysis_app/pages/exercise.dart';
 import 'package:scoliosis_analysis_app/pages/infomation.dart';
@@ -8,17 +8,11 @@ class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
 
   @override
-  FirstScreenState createState() => FirstScreenState();
+  State<FirstScreen> createState() => _FirstScreenState();
 }
 
-class FirstScreenState extends State<FirstScreen> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+class _FirstScreenState extends State<FirstScreen> {
+  int _currentIndex = 0;
 
   final List<Widget> _pages = [
     InformationScreen(),
@@ -29,65 +23,57 @@ class FirstScreenState extends State<FirstScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 10,
-              offset: const Offset(0, -5),
-            ),
-          ],
+      body: _pages[_currentIndex],
+      floatingActionButton: SizedBox(
+        width: 70,
+        height: 70,
+        child: FloatingActionButton(
+          backgroundColor: Colors.blue,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(40)),
+          ),
+          onPressed: () {
+            setState(() {
+              _currentIndex = 1;
+            });
+          },
+          child: const Icon(
+            FontAwesomeIcons.camera,
+            size: 45,
+            color: Colors.white,
+          ),
         ),
-        child: BottomNavigationBar(
-          items: <BottomNavigationBarItem>[
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.inbox_rounded),
-              label: 'ข้อมูล',
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        color: Colors.white,
+        height: 65,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  _currentIndex = 0;
+                });
+              },
+              icon: const Icon(FontAwesomeIcons.home),
+              color: _currentIndex == 0 ? Colors.blue : Colors.grey,
+              iconSize: 30,
             ),
-            BottomNavigationBarItem(
-              icon: Container(
-                height: 75,
-                width: 75,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.blue.shade900,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 10,
-                      spreadRadius: 2,
-                    ),
-                  ],
-                ),
-                child: const Icon(
-                  Icons.camera_alt_outlined,
-                  size: 35,
-                  color: Colors.white,
-                ),
-              ),
-              label: 'วิเคราะห์',
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.directions_walk_sharp),
-              label: 'กายภาพ',
+            SizedBox(width: 20),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  _currentIndex = 2;
+                });
+              },
+              icon: const Icon(FontAwesomeIcons.personWalking),
+              color: _currentIndex == 2 ? Colors.blue : Colors.grey,
+              iconSize: 30,
             ),
           ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.grey,
-          showUnselectedLabels: true,
-          type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-          unselectedLabelStyle: const TextStyle(
-            fontSize: 16,
-          ),
-          elevation: 0,
         ),
       ),
     );
