@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.dampro"
+    namespace = "com.example.scoliosis"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 

@@ -43,6 +43,8 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_launcher_icons: ^0.14.2
   font_awesome_flutter: ^10.8.0
+  url_launcher: ^6.1.14
+  change_app_package_name: ^1.4.0
   
 flutter_icons:
   android: true

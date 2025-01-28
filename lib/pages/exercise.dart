@@ -18,14 +18,6 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
         elevation: 0.0,
         toolbarHeight: 60,
         centerTitle: true,
-        title: Text(
-          'กายภาพ',
-          style: GoogleFonts.sarabun(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: const LinearGradient(
@@ -88,7 +80,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(40),
                                       child: Image.asset(
-                                        'assets/img/slide.jpg',
+                                        'assets/img/posture.png',
                                         height: 180,
                                         width: 270,
                                         fit: BoxFit.cover,
@@ -97,7 +89,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                                   ),
                                   const SizedBox(height: 16),
                                   Text(
-                                    'แนวทางปฏิบัติ',
+                                    'ท่าสำหรับการ',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.sarabun(
                                       fontSize: 20,
@@ -106,19 +98,11 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
-                                    'เมื่อพบภาวะเสี่ยง',
+                                    'กายภาพบำบัด',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.sarabun(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    'รู้เร็ว เท่าทัน แก้ไขได้',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.sarabun(
-                                      fontSize: 14,
-                                      color: Colors.grey[700],
                                     ),
                                   ),
                                 ],
