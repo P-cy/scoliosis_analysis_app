@@ -412,12 +412,12 @@ class RiskGuidelinesScreen extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                // Center(
-                //   child: HyperlinkText(
-                //       text: "อ่านเพิ่มเติมที่นี่ อ้างอิงจาก VEJTHANI",
-                //       url:
-                //           "https://www.vejthani.com/th/2021/12/%E0%B8%AA%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%84%E0%B8%A7%E0%B8%A3%E0%B8%97%E0%B8%B3%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%84%E0%B8%A7%E0%B8%A3%E0%B8%97/"),
-                // ),
+                Center(
+                  child: HyperlinkText(
+                      text: "อ่านเพิ่มเติมที่นี่ อ้างอิงจาก VEJTHANI",
+                      url:
+                          "https://www.vejthani.com/th/2021/12/%E0%B8%AA%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%84%E0%B8%A7%E0%B8%A3%E0%B8%97%E0%B8%B3%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%84%E0%B8%A7%E0%B8%A3%E0%B8%97/"),
+                ),
               ],
             ),
           ),

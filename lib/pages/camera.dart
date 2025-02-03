@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'package:flutter/services.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -34,7 +36,8 @@ class _CameraScreenState extends State<CameraScreen> {
 
   // โหลดโมเดลที่เทรนไว้
   loadModel() async {
-    final modelPath = await getModelPath('assets/ml/scoliosis_model.tflite');
+    final modelPath =
+        await getModelPath('assets/ml/scoliosis_model_new.tflite');
     final options = LocalLabelerOptions(
       confidenceThreshold: 0.6,
       modelPath: modelPath,
@@ -78,7 +81,7 @@ class _CameraScreenState extends State<CameraScreen> {
       final String text = label.label.toLowerCase(); // แปลงเป็นตัวพิมพ์เล็ก
       final double confidence = label.confidence * 100; // แปลงเป็น %
 
-      if (text.contains("scoliosis")) {
+      if (text.contains("abnormal")) {
         confidenceScore = confidence;
         diagnosisType = "Scoliosis";
       } else if (text.contains("normal")) {
@@ -111,6 +114,14 @@ class _CameraScreenState extends State<CameraScreen> {
         elevation: 0.0,
         toolbarHeight: 60,
         centerTitle: true,
+        title: Text(
+          'วิเคราะห์ผลรูปภาพ',
+          style: GoogleFonts.sarabun(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: const LinearGradient(
@@ -133,220 +144,230 @@ class _CameraScreenState extends State<CameraScreen> {
       ),
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Card(
-                  color: Colors.grey[300],
-                  margin: const EdgeInsets.all(10),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height / 2.5,
-                    child: image == null
-                        ? const Icon(
-                            Icons.image_outlined,
-                            size: 50,
-                          )
-                        : Image.file(image!),
-                  ),
-                ),
-                Card(
-                  margin: const EdgeInsets.all(10),
-                  child: Container(
-                    padding: const EdgeInsets.all(15),
-                    child: Column(
-                      children: [
-                        if (diagnosisType.isEmpty) ...[
-                          const Text(
-                            "สแกน เพื่อดูผลลัพธ์",
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                            textAlign: TextAlign.center,
+          child: Column(children: [
+            Card(
+              color: Colors.grey[300],
+              margin: const EdgeInsets.all(10),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 1.8,
+                child: image == null
+                    ? const Icon(
+                        Icons.image_outlined,
+                        size: 50,
+                      )
+                    : Image.file(image!),
+              ),
+            ),
+            Card(
+              margin: const EdgeInsets.all(8),
+              child: Container(
+                padding: const EdgeInsets.all(15),
+                child: Column(
+                  children: [
+                    if (diagnosisType.isEmpty) ...[
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "สแกนเพื่อดูผลลัพธ์",
+                          style: GoogleFonts.sarabun(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
-                        ] else if (diagnosisType == "Scoliosis") ...[
-                          Text(
-                            "จากผลการวิเคราะห์\nพบว่าคุณอาจมีภาวะกระดูกสันหลังคด",
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.redAccent,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            "โอกาสที่คุณจะเป็นโรคนี้อยู่ที่",
-                            style: TextStyle(fontSize: 18),
-                            textAlign: TextAlign.center,
-                          ),
-                          Text(
-                            "${confidenceScore.toStringAsFixed(2)}%",
-                            style: TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.red,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            "เพื่อความแน่ใจและการวินิจฉัยที่ถูกต้อง\n"
-                            "แนะนำให้คุณศึกษาข้อมูลเพิ่มเติมเกี่ยวกับภาวะนี้ค่ะ",
-                            style: TextStyle(fontSize: 16),
-                            textAlign: TextAlign.center,
-                          ),
-                        ] else if (diagnosisType == "Normal") ...[
-                          Text(
-                            "จากการวิเคราะห์\nผลแสดงให้เห็นว่าคุณอยู่ในภาวะปกติ",
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.green,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            "คุณอยู่ในเกณฑ์ปกติ",
-                            style: TextStyle(fontSize: 18),
-                            textAlign: TextAlign.center,
-                          ),
-                          Text(
-                            "${confidenceScore.toStringAsFixed(2)}%",
-                            style: TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.green,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            "ถึงแม้ผลจะอยู่ในเกณฑ์ปกติ แต่การดูแลสุขภาพ\nหลังของคุณยังเป็นสิ่งสำคัญ"
-                            "คุณควรป้องกันและ\nรักษาสุขภาพตามคำแนะนำต่อไปนี้ค่ะ",
-                            style: TextStyle(fontSize: 16),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(height: 16),
-                          Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ExerciseScreen()),
-                                );
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.9),
-                                  borderRadius: BorderRadius.circular(32),
-                                  border: Border.all(
-                                    color: Colors.grey.shade300,
-                                    width: 1.5,
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 2,
-                                      blurRadius: 10,
-                                      offset: Offset(0, 5),
-                                    ),
-                                  ],
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.vertical(
-                                          top: Radius.circular(32),
-                                          bottom: Radius.circular(32),
-                                        ),
-                                        child: Image.asset(
-                                          'assets/img/slide2.jpg',
-                                          height: 150,
-                                          width: 175,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'การกายภาพ\nบำบัดด้วยตนเอง',
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          SizedBox(height: 20),
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        ExerciseScreen()),
-                                              );
-                                            },
-                                            child: Text(
-                                              'ข้อมูลเพิ่มเติม >',
-                                              style:
-                                                  TextStyle(color: Colors.blue),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ] else if (diagnosisType == "Scoliosis") ...[
+                      Text(
+                        "จากผลการวิเคราะห์\nพบว่าคุณอาจมีภาวะกระดูกสันหลังคด",
+                        style: GoogleFonts.sarabun(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.redAccent,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "โอกาสที่คุณจะเป็นโรคนี้อยู่ที่",
+                        style: GoogleFonts.sarabun(fontSize: 18),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        "${confidenceScore.toStringAsFixed(2)}%",
+                        style: GoogleFonts.sarabun(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "เพื่อความแน่ใจและการวินิจฉัยที่ถูกต้อง\n"
+                        "แนะนำให้คุณศึกษาข้อมูลเพิ่มเติมเกี่ยวกับภาวะนี้ค่ะ",
+                        style: GoogleFonts.sarabun(fontSize: 16),
+                        textAlign: TextAlign.center,
+                      ),
+                    ] else if (diagnosisType == "Normal") ...[
+                      Text(
+                        "จากการวิเคราะห์\nผลแสดงให้เห็นว่าคุณอยู่ในภาวะปกติ",
+                        style: GoogleFonts.sarabun(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "คุณอยู่ในเกณฑ์ปกติ",
+                        style: GoogleFonts.sarabun(fontSize: 18),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        "${confidenceScore.toStringAsFixed(2)}%",
+                        style: GoogleFonts.sarabun(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "ถึงแม้ผลจะอยู่ในเกณฑ์ปกติ แต่การดูแลสุขภาพ\nหลังของคุณยังเป็นสิ่งสำคัญ"
+                        "คุณควรป้องกันและ\nรักษาสุขภาพตามคำแนะนำต่อไปนี้ค่ะ",
+                        style: GoogleFonts.sarabun(fontSize: 16),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 16),
+                      Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ExerciseScreen()),
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.9),
+                              borderRadius: BorderRadius.circular(32),
+                              border: Border.all(
+                                color: Colors.grey.shade300,
+                                width: 1.5,
                               ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 10,
+                                  offset: Offset(0, 5),
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(32),
+                                      bottom: Radius.circular(32),
+                                    ),
+                                    child: Image.asset(
+                                      'assets/img/slide2.jpg',
+                                      height: 150,
+                                      width: 175,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'การกายภาพ\nบำบัดด้วยตนเอง',
+                                        style: GoogleFonts.sarabun(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ExerciseScreen()),
+                                          );
+                                        },
+                                        child: Text(
+                                          'ข้อมูลเพิ่มเติม >',
+                                          style: GoogleFonts.sarabun(
+                                              color: Colors.blue),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ],
-                    ),
-                  ),
-                ),
-                // ปุ่มเลือกภาพและถ่ายภาพ
-                Card(
-                  margin: const EdgeInsets.all(10),
-                  child: SizedBox(
-                    height: 100,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        InkWell(
-                          child: const Icon(
-                            Icons.image_outlined,
-                            size: 50,
-                          ),
-                          onTap: () {
-                            chooseImage();
-                          },
                         ),
-                        InkWell(
-                          child: const Icon(
-                            Icons.camera_alt_outlined,
-                            size: 50,
-                          ),
-                          onTap: () {
-                            captureImage();
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
+                      ),
+                    ],
+                  ],
                 ),
-              ]),
+              ),
+            ),
+            // ปุ่มเลือกภาพและถ่ายภาพ
+            SizedBox(
+              height: 100,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  InkWell(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.blue.shade100,
+                        borderRadius: BorderRadius.circular(36),
+                      ),
+                      padding: const EdgeInsets.all(16),
+                      child: FaIcon(
+                        FontAwesomeIcons.image,
+                        size: 50,
+                        color: Colors.black,
+                      ),
+                    ),
+                    onTap: chooseImage,
+                  ),
+                  InkWell(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.blue.shade100,
+                        borderRadius: BorderRadius.circular(36),
+                      ),
+                      padding: const EdgeInsets.all(16),
+                      child: Icon(
+                        Ionicons.ios_camera_sharp,
+                        size: 50,
+                        color: Colors.black,
+                      ),
+                    ),
+                    onTap: captureImage,
+                  ),
+                ],
+              ),
+            ),
+          ]),
         ),
       ),
     );

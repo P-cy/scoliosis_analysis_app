@@ -328,12 +328,12 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                // Center(
-                //   child: HyperlinkText(
-                //       text: "อ่านเพิ่มเติมที่นี่ อ้างอิงจาก KDMS",
-                //       url:
-                //           "https://kdmshospital.com/article/symptoms-and-treatment-of-scoliosis/"),
-                // ),
+                Center(
+                  child: HyperlinkText(
+                      text: "อ่านเพิ่มเติมที่นี่ อ้างอิงจาก KDMS",
+                      url:
+                          "https://kdmshospital.com/article/symptoms-and-treatment-of-scoliosis/"),
+                ),
               ],
             ),
           ),

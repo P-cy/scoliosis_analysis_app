@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoliosis_analysis_app/pages/camera.dart';
+import 'package:scoliosis_analysis_app/pages/cameraa.dart';
 import 'package:scoliosis_analysis_app/pages/exercise.dart';
 import 'package:scoliosis_analysis_app/pages/infomation.dart';
 
@@ -48,7 +49,7 @@ class _FirstScreenState extends State<FirstScreen> {
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         color: Colors.white,
-        height: 65,
+        height: 55,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
