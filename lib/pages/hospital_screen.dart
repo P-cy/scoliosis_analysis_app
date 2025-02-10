@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:scoliosis_analysis_app/pages/hospital_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HospitalScreen extends StatefulWidget {
@@ -10,51 +11,7 @@ class HospitalScreen extends StatefulWidget {
 }
 
 class _HospitalScreenState extends State<HospitalScreen> {
-  String? selectedRegion;
-  String? selectedProvince;
-  Map<String, Map<String, List<Map<String, String>>>> regions = {
-    'ภาคตะวันออกเฉียงเหนือ': {
-      'กาฬสินธุ์': [
-        {
-          'name': 'โรงพยาบาลกาฬสินธุ์',
-          'address':
-              'ถนนเลี่ยงเมืองสงเปลือย ตำบลกาฬสินธุ์ อำเภอเมืองกาฬสินธุ์ จังหวัดกาฬสินธุ์ 46000',
-          'website': 'https://www.klsh.go.th/',
-          'details':
-              'โรงพยาบาลกาฬสินธุ์มีคลินิกศัลยกรรมกระดูกและข้อที่ให้บริการตรวจและรักษาอาการกระดูกสันหลังคด'
-        },
-        {
-          'name': 'คลินิกกระดูกและข้อหมอปิยพันธุ์',
-          'address': '152 ถนนภิรมย์ อำเภอเมืองกาฬสินธุ์ จังหวัดกาฬสินธุ์ 46000',
-          'website':
-              'https://www.facebook.com/Clinic.Ortho.Piyapan.Kalasin.Doctor/',
-          'details':
-              'คลินิกนี้ให้บริการตรวจวินิจฉัยและรักษาโรคเกี่ยวกับกระดูกและข้อ รวมถึงอาการกระดูกสันหลังคด'
-        },
-      ],
-      'ขอนแก่น': [
-        {
-          'name': 'โรงพยาบาลศรีนครินทร์ (Srinagarind Hospital)',
-          'address': 'ถนนมิตรภาพ อำเภอเมือง จังหวัดขอนแก่น 40000',
-          'website': 'https://www.smckku.com/',
-          'details':
-              'โรงพยาบาลศรีนครินทร์มีคลินิกเฉพาะทางด้านกระดูกและข้อที่ให้บริการตรวจและรักษาอาการกระดูกสันหลังคด'
-        },
-      ]
-    },
-    'ภาคกลาง': {
-      'กรุงเทพมหานคร (เขตปกครองพิเศษ)': [
-        {
-          'name': 'โรงพยาบาลกรุงเทพ (Bangkok Hospital)',
-          'address':
-              'ที่อยู่: เลขที่ 2 ซอยศูนย์วิจัย 7 ถนนเพชรบุรีตัดใหม่ แขวงบางกะปิ เขตห้วยขวาง กรุงเทพมหานคร 10310',
-          'website': 'https://www.bangkokhospital.com/',
-          'details':
-              ' โรงพยาบาลกรุงเทพมีศูนย์กระดูกสันหลังที่ให้บริการตรวจวินิจฉัยและรักษาอาการกระดูกสันหลังคด โดยทีมแพทย์ผู้เชี่ยวชาญและอุปกรณ์ทางการแพทย์ที่ทันสมัย'
-        },
-      ]
-    }
-  };
+  
 
   Future<void> _launchURL(String url) async {
     if (await canLaunch(url)) {

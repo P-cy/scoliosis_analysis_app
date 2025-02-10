@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scoliosis_analysis_app/pages/exercise.dart';
-import 'package:scoliosis_analysis_app/pages/hospital.dart';
+import 'package:scoliosis_analysis_app/pages/hospital_screen.dart';
 import 'package:scoliosis_analysis_app/pages/info_screen.dart';
 import 'package:scoliosis_analysis_app/pages/prevention.dart';
 import 'package:scoliosis_analysis_app/pages/risk_guidelines.dart';
