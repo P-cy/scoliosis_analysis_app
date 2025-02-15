@@ -11,8 +11,6 @@ class HospitalScreen extends StatefulWidget {
 }
 
 class _HospitalScreenState extends State<HospitalScreen> {
-  
-
   Future<void> _launchURL(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
@@ -49,17 +47,23 @@ class _HospitalScreenState extends State<HospitalScreen> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(
+              "เลือกภูมิภาค",
+              style: GoogleFonts.sarabun(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            SizedBox(height: 8),
             DropdownButton<String>(
               value: selectedRegion,
               hint: Text(
-                "เลือกภูมิภาค",
-                style: GoogleFonts.sarabun(
-                  fontSize: 16,
-                ),
+                "ภูมิภาค",
+                style: GoogleFonts.sarabun(fontSize: 16),
               ),
               isExpanded: true,
               onChanged: (String? newValue) {
@@ -75,11 +79,20 @@ class _HospitalScreenState extends State<HospitalScreen> {
                 );
               }).toList(),
             ),
+            SizedBox(height: 16),
             if (selectedRegion != null) ...[
+              Text(
+                "เลือกจังหวัด",
+                style: GoogleFonts.sarabun(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              SizedBox(height: 8),
               DropdownButton<String>(
                 value: selectedProvince,
                 hint: Text(
-                  "เลือกจังหวัด",
+                  "จังหวัด",
                   style: GoogleFonts.sarabun(fontSize: 16),
                 ),
                 isExpanded: true,
@@ -101,43 +114,60 @@ class _HospitalScreenState extends State<HospitalScreen> {
               Expanded(
                 child: ListView(
                   children: regions[selectedRegion]![selectedProvince]!
-                      .map((clinic) => ListTile(
-                            title: Text(clinic['name']!),
-                            subtitle: Text(clinic['address']!),
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) => AlertDialog(
-                                  title: Text(clinic['name']!),
-                                  content: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text("ที่อยู่: ${clinic['address']}"),
-                                      SizedBox(height: 10),
-                                      Text("รายละเอียด: ${clinic['details']}"),
-                                      SizedBox(height: 10),
-                                      Text("เว็บไซต์: ${clinic['website']}"),
+                      .map((clinic) => Card(
+                            margin: EdgeInsets.only(bottom: 16.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            elevation: 5,
+                            child: ListTile(
+                              title: Text(
+                                clinic['name']!,
+                                style: GoogleFonts.sarabun(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              subtitle: Text(
+                                clinic['address']!,
+                                style: GoogleFonts.sarabun(fontSize: 14),
+                              ),
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                    title: Text(clinic['name']!),
+                                    content: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text("ที่อยู่: ${clinic['address']}"),
+                                        SizedBox(height: 10),
+                                        Text(
+                                            "รายละเอียด: ${clinic['details']}"),
+                                        SizedBox(height: 10),
+                                        Text("เว็บไซต์: ${clinic['website']}"),
+                                        TextButton(
+                                          child: Text("เปิดเว็บไซต์"),
+                                          onPressed: () {
+                                            _launchURL(clinic['website']!);
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                    actions: [
                                       TextButton(
-                                        child: Text("เปิดเว็บไซต์"),
+                                        child: Text("ปิด"),
                                         onPressed: () {
-                                          _launchURL(clinic['website']!);
+                                          Navigator.of(context).pop();
                                         },
                                       ),
                                     ],
                                   ),
-                                  actions: [
-                                    TextButton(
-                                      child: Text("ปิด"),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
+                                );
+                              },
+                            ),
                           ))
                       .toList(),
                 ),

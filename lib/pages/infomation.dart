@@ -83,7 +83,7 @@ class _InformationScreenState extends State<InformationScreen> {
                                 bottom: Radius.circular(32),
                               ),
                               child: Image.asset(
-                                'assets/img/pos.jpg',
+                                'assets/img/poster_spine.jpg',
                                 height: 160,
                                 fit: BoxFit.cover,
                               ),
@@ -135,7 +135,7 @@ class _InformationScreenState extends State<InformationScreen> {
                           },
                         ),
                         _buildHealthCard(
-                          'assets/img/slide.jpg',
+                          'assets/img/slide1.jpg',
                           'แนวทางปฏิบัติ\nเมื่อพบภาวะเสี่ยง',
                           () {
                             Navigator.push(
@@ -173,22 +173,7 @@ class _InformationScreenState extends State<InformationScreen> {
                   SizedBox(
                     height: 16,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      4,
-                      (index) => Container(
-                        margin: EdgeInsets.symmetric(horizontal: 4),
-                        width: 8,
-                        height: 8,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color:
-                              _currentPage == index ? Colors.blue : Colors.grey,
-                        ),
-                      ),
-                    ),
-                  ),
+                  _buildPageIndicator(),
                 ],
               ),
             ),
@@ -269,7 +254,14 @@ class _InformationScreenState extends State<InformationScreen> {
                                         ),
                                         SizedBox(height: 20),
                                         TextButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      HospitalScreen()),
+                                            );
+                                          },
                                           child: Text(
                                             'คลิกเพื่อดูรายชื่อ >',
                                             style:
@@ -289,118 +281,6 @@ class _InformationScreenState extends State<InformationScreen> {
                     SizedBox(
                       height: 8,
                     ),
-                    Row(
-                      children: [
-                        Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0.9),
-                                    borderRadius: BorderRadius.circular(32),
-                                    border: Border.all(
-                                      color: Colors.grey.shade300,
-                                      width: 1.5,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 2,
-                                        blurRadius: 10,
-                                        offset: Offset(0, 5),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.vertical(
-                                            top: Radius.circular(16),
-                                            bottom: Radius.circular(16),
-                                          ),
-                                          child: Image.asset(
-                                            'assets/img/docs.jpg',
-                                            height: 75,
-                                            width: 60,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(16.0),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'แบบประเมิน\nหลังใช้งาน\nแอปพลิเคชัน',
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ])),
-                            )),
-                        Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0.9),
-                                    borderRadius: BorderRadius.circular(32),
-                                    border: Border.all(
-                                      color: Colors.grey.shade300,
-                                      width: 1.5,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 2,
-                                        blurRadius: 10,
-                                        offset: Offset(0, 5),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.vertical(
-                                            top: Radius.circular(16),
-                                            bottom: Radius.circular(16),
-                                          ),
-                                          child: Image.asset(
-                                            'assets/img/manual.jpg',
-                                            height: 75,
-                                            width: 60,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(16.0),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'คู่มือการ\nใช้งาน\nแอปพลิเคชัน',
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ])),
-                            ))
-                      ],
-                    )
                   ]),
             ),
           ]),
@@ -472,6 +352,25 @@ Widget _buildHealthCard(String imagePath, String title, VoidCallback onTap) {
               ),
             ),
           ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget _buildPageIndicator() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: List.generate(
+      4,
+      (index) => AnimatedContainer(
+        duration: Duration(milliseconds: 300),
+        margin: EdgeInsets.symmetric(horizontal: 8),
+        width: _currentPage == index ? 24 : 8,
+        height: 8,
+        decoration: BoxDecoration(
+          color: _currentPage == index ? Colors.blue : Colors.grey,
+          borderRadius: BorderRadius.circular(4),
         ),
       ),
     ),

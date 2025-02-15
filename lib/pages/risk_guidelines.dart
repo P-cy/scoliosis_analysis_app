@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scoliosis_analysis_app/pages/exercise.dart';
+import 'package:scoliosis_analysis_app/pages/hospital_screen.dart';
 import 'package:scoliosis_analysis_app/pages/linkurl.dart';
 
 class RiskGuidelinesScreen extends StatelessWidget {
@@ -75,7 +76,7 @@ class RiskGuidelinesScreen extends StatelessWidget {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(40),
                                 child: Image.asset(
-                                  'assets/img/slide.jpg',
+                                  'assets/img/slide1.jpg',
                                   height: 180,
                                   width: 270,
                                   fit: BoxFit.cover,
@@ -204,7 +205,13 @@ class RiskGuidelinesScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8),
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HospitalScreen()),
+                            );
+                          },
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.9),
@@ -255,7 +262,14 @@ class RiskGuidelinesScreen extends StatelessWidget {
                                       ),
                                       SizedBox(height: 20),
                                       TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HospitalScreen()),
+                                          );
+                                        },
                                         child: Text(
                                           'คลิกเพื่อดูรายชื่อ >',
                                           style: TextStyle(
@@ -283,18 +297,6 @@ class RiskGuidelinesScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Center(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: Image.asset(
-                      'assets/img/Handdoctor.jpg',
-                      height: 250,
-                      width: 300,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
                 Text(
                   '3. การกายภาพบำบัดเสริมสร้างกล้ามเนื้อ',
                   style: GoogleFonts.sarabun(
@@ -311,84 +313,94 @@ class RiskGuidelinesScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ExerciseScreen()),
-                      );
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.9),
-                        borderRadius: BorderRadius.circular(32),
-                        border: Border.all(
-                          color: Colors.grey.shade300,
-                          width: 1.5,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 10,
-                            offset: Offset(0, 5),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(32),
-                                bottom: Radius.circular(32),
+                Center(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HospitalScreen()),
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.9),
+                              borderRadius: BorderRadius.circular(32),
+                              border: Border.all(
+                                color: Colors.grey.shade300,
+                                width: 1.5,
                               ),
-                              child: Image.asset(
-                                'assets/img/slide2.jpg',
-                                height: 150,
-                                width: 175,
-                                fit: BoxFit.cover,
-                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 10,
+                                  offset: Offset(0, 5),
+                                ),
+                              ],
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
-                                Text(
-                                  'การกายภาพ\nบำบัดด้วยตนเอง',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(32),
+                                      bottom: Radius.circular(32),
+                                    ),
+                                    child: Image.asset(
+                                      "assets/img/posture.jpg",
+                                      height: 150,
+                                      width: 175,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
-                                SizedBox(height: 20),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              ExerciseScreen()),
-                                    );
-                                  },
-                                  child: Text(
-                                    'ข้อมูลเพิ่มเติม >',
-                                    style: TextStyle(color: Colors.blue),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "  การกายภาพบำบัด\n  ด้วยตนเอง",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ExerciseScreen()),
+                                          );
+                                        },
+                                        child: Text(
+                                          'ข้อมูลเพิ่มเติม >',
+                                          style: TextStyle(
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
                 SizedBox(
