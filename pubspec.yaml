@@ -83,7 +83,8 @@ flutter:
 
   assets:
     - assets/img/
-    - assets/ml/Ai_scoliosis.tflite
+    - assets/ml/
+    - assets/ml/scoliosis_analysis_model.tflite
   
 
   # To add assets to your application, add an assets section, like this:

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoliosis_analysis_app/pages/camera.dart';
-import 'package:scoliosis_analysis_app/pages/exercise.dart';
-import 'package:scoliosis_analysis_app/pages/infomation.dart';
-import 'package:scoliosis_analysis_app/pages/object_detector_view.dart';
+import 'package:scoliosis_analysis_app/pages/exercise_page.dart';
+import 'package:scoliosis_analysis_app/pages/home_page.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
@@ -17,7 +16,7 @@ class _FirstScreenState extends State<FirstScreen> {
 
   final List<Widget> _pages = [
     InformationScreen(),
-    ObjectDetectorView(),
+    CameraScreen(),
     ExerciseScreen(),
   ];
 

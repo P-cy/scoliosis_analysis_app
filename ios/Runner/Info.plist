@@ -7,12 +7,16 @@
     <string>https</string>
     <string>http</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Need camera access for scanning</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need photo library access for getting pictures</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Scoliosis Analysis App</string>
+	<string>สแกนกระดูกสันหลังคด</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

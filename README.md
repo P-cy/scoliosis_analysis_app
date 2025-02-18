@@ -1,4 +1,4 @@
-# scoliosis_analysis_app
+# scoliosis_analysis_application
 
 A new Flutter project.
 

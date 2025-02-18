@@ -2,6 +2,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart';
 import 'package:scoliosis_analysis_app/painters/object_detector_painter.dart';
+
 import 'detector_view.dart';
 import 'utils.dart';
 
@@ -21,7 +22,7 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
   int _option = 0;
   final _options = {
     'default': '',
-    'scoliosis': 'assets/ml/Ai_scoliosis.tflite',
+    'scoliosis': 'assets/ml/scoliosis_analysis_model.tflite',
   };
 
   @override

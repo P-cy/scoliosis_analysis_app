@@ -1,6 +1,6 @@
 {
-    "name": "scoliosis_analysis_app",
-    "short_name": "scoliosis_analysis_app",
+    "name": "scoliosis_analysis_application",
+    "short_name": "scoliosis_analysis_application",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
