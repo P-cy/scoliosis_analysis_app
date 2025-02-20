@@ -27,6 +27,16 @@ class _CameraScreenState extends State<CameraScreen> {
   String diagnosisType = "";
   bool isProcessing = false;
 
+  void resetAnalysis() {
+    setState(() {
+      image = null;
+      diagnosisResult = '';
+      confidenceScore = 0.0;
+      diagnosisType = "";
+      isProcessing = false;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -58,15 +68,27 @@ class _CameraScreenState extends State<CameraScreen> {
 
   Future<void> chooseImage() async {
     try {
+      // เคลียร์ข้อมูลเ
+      setState(() {
+        image = null;
+        diagnosisResult = '';
+        confidenceScore = 0.0;
+        diagnosisType = "";
+        isProcessing = true;
+      });
+
       XFile? selectedImage =
           await imagePicker.pickImage(source: ImageSource.gallery);
       if (selectedImage != null) {
         setState(() {
-          isProcessing = true;
           image = File(selectedImage.path);
         });
 
         await processAndAnalyzeImage(image!);
+      } else {
+        setState(() {
+          isProcessing = false;
+        });
       }
     } catch (e) {
       print('Error choosing image: $e');
@@ -79,15 +101,27 @@ class _CameraScreenState extends State<CameraScreen> {
 
   Future<void> captureImage() async {
     try {
+      // เคลียร์ข้อมูล
+      setState(() {
+        image = null;
+        diagnosisResult = '';
+        confidenceScore = 0.0;
+        diagnosisType = "";
+        isProcessing = true;
+      });
+
       XFile? selectedImage =
           await imagePicker.pickImage(source: ImageSource.camera);
       if (selectedImage != null) {
         setState(() {
-          isProcessing = true;
           image = File(selectedImage.path);
         });
 
         await processAndAnalyzeImage(image!);
+      } else {
+        setState(() {
+          isProcessing = false;
+        });
       }
     } catch (e) {
       print('Error capturing image: $e');
@@ -100,6 +134,11 @@ class _CameraScreenState extends State<CameraScreen> {
 
   Future<void> processAndAnalyzeImage(File imageFile) async {
     try {
+      if (!(await imageFile.exists()) || await imageFile.length() == 0) {
+        setNoSpineFoundResult();
+        return;
+      }
+
       final processedImage = await preprocessImage(imageFile);
       if (processedImage != null) {
         image = processedImage;
@@ -278,7 +317,9 @@ class _CameraScreenState extends State<CameraScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 16,),
+            SizedBox(
+              height: 16,
+            ),
             Card(
               color: Colors.grey[300],
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -289,13 +330,35 @@ class _CameraScreenState extends State<CameraScreen> {
                     height: MediaQuery.of(context).size.height / 2.5,
                     child: image == null
                         ? const Icon(Icons.image_outlined, size: 50)
-                        : Image.file(image!),
+                        : Image.file(image!, fit: BoxFit.cover),
                   ),
                   if (isProcessing)
                     Container(
                       color: Colors.black.withOpacity(0.3),
                       child: const Center(
                         child: CircularProgressIndicator(),
+                      ),
+                    ),
+                  //ปุ่ม reset
+                  if (image != null)
+                    Positioned(
+                      top: 8,
+                      right: 8,
+                      child: Material(
+                        color: Colors.red.withOpacity(0.7),
+                        borderRadius: BorderRadius.circular(20),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(20),
+                          onTap: resetAnalysis,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.refresh,
+                              color: Colors.white,
+                              size: 24,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                 ],
@@ -415,8 +478,7 @@ class _CameraScreenState extends State<CameraScreen> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'การกายภาพ\nบำบัดด้วยตนเอง',
