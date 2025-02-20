@@ -1129,7 +1129,7 @@ Map<String, Map<String, List<Map<String, String>>>> regions = {
         'name': 'โรงพยาบาลเชียงคำ',
         'address':
             ' เลขที่ 244 หมู่ที่ 4 ถนนสิทธิประชาราษฎร์ ตำบลหย่วน อำเภอเชียงคำ จังหวัดพะเยา 56110',
-        'website': 'https://www.ckh.moph.go.th/',
+        'website': 'http://www.ckh.moph.go.th/',
         'details':
             ' โรงพยาบาลเชียงคำมีบริการตรวจรักษาโรคกระดูกและข้อ รวมถึงอาการที่เกี่ยวข้องกับกระดูกสันหลังคด โดยทีมแพทย์ผู้เชี่ยวชาญ'
       },
@@ -1156,7 +1156,7 @@ Map<String, Map<String, List<Map<String, String>>>> regions = {
         'name': 'โรงพยาบาลสมเด็จพระยุพราชปัว',
         'address':
             ' เลขที่ 70 หมู่6 ถนนปัว-น้ำยาว ตำบลวรนคร อำเภอปัว จังหวัดน่าน 55120',
-        'website': 'http://www.puahospital.go.th/',
+        'website': 'https://www.facebook.com/PCPHNAN/?locale=th_TH',
         'details':
             ' โรงพยาบาลสมเด็จพระยุพราชปัวมีบริการตรวจรักษาโรคกระดูกและข้อ รวมถึงอาการที่เกี่ยวข้องกับกระดูกสันหลังคด โดยทีมแพทย์ผู้เชี่ยวชาญ'
       },
