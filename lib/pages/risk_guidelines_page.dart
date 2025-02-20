@@ -234,9 +234,9 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
                                       bottom: Radius.circular(32),
                                     ),
                                     child: Image.asset(
-                                      "assets/img/posture.jpg",
-                                      height: 150,
-                                      width: 175,
+                                      "assets/img/posture.png",
+                                      height: 130,
+                                      width: 155,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -250,7 +250,7 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
                                       Text(
                                         "  การกายภาพบำบัด\n  ด้วยตนเอง",
                                         style: TextStyle(
-                                          fontSize: 18,
+                                          fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),

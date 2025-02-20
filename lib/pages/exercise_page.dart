@@ -12,6 +12,14 @@ class ExerciseScreen extends StatelessWidget {
         elevation: 0.0,
         toolbarHeight: 60,
         centerTitle: true,
+        title: Text(
+          'การดูแลกระดูกสันหลัง',
+          style: GoogleFonts.sarabun(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: const LinearGradient(
