@@ -78,6 +78,7 @@ class _CameraScreenState extends State<CameraScreen> {
         diagnosisType = "";
         isProcessing = true;
       });
+      
 
       XFile? selectedImage =
           await imagePicker.pickImage(source: ImageSource.gallery);
@@ -111,6 +112,8 @@ class _CameraScreenState extends State<CameraScreen> {
         diagnosisType = "";
         isProcessing = true;
       });
+
+      //await imagePicker.clearCache();
 
       XFile? selectedImage =
           await imagePicker.pickImage(source: ImageSource.camera);
@@ -407,7 +410,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     ),
                   ] else if (diagnosisType == "Normal") ...[
                     Text(
-                      "จากการวิเคราะห์\nผลแสดงให้เห็นว่าคุณอยู่ในภาวะปกติ",
+                      "จากการวิเคราะห์ผล\nแสดงให้เห็นว่าคุณอยู่ในภาวะปกติ",
                       style: GoogleFonts.sarabun(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
