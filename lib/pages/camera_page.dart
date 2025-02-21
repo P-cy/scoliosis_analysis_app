@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, deprecated_member_use, sort_child_properties_last
+
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';

@@ -1,9 +1,11 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scoliosis_analysis_app/pages/exercise_page.dart';
 
 class GuidelinesScreen extends StatelessWidget {
-  const GuidelinesScreen({Key? key}) : super(key: key);
+  const GuidelinesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
