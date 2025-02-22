@@ -1,11 +1,13 @@
-// ignore_for_file: sized_box_for_whitespace, deprecated_member_use
+// ignore_for_file: sized_box_for_whitespace, deprecated_member_use, unnecessary_string_escapes
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:scoliosis_analysis_app/pages/HealthCard_Widget.dart';
 import 'package:scoliosis_analysis_app/pages/hospital_page.dart';
 import 'package:scoliosis_analysis_app/pages/info_page.dart';
 import 'package:scoliosis_analysis_app/pages/guidelines_page.dart';
 import 'package:scoliosis_analysis_app/pages/risk_guidelines_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -145,11 +147,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           });
                         },
                         children: [
-                          _buildHealthCard(
-                            context,
-                            'assets/img/back-bone.jpg',
-                            'โรคกระดูก\nสันหลังคด',
-                            () {
+                          HealthCard(
+                            imagePath: 'assets/img/back-bone.jpg',
+                            title: 'โรคกระดูก\nสันหลังคด',
+                            onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -157,11 +158,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               );
                             },
                           ),
-                          _buildHealthCard(
-                            context,
-                            'assets/img/slide1.jpg',
-                            'แนวทางปฏิบัติ\nเมื่อพบภาวะเสี่ยง',
-                            () {
+                          HealthCard(
+                            imagePath: 'assets/img/slide1.jpg',
+                            title:
+                                'แนวทางการดูแลตนเอง\สำหรับผู้ที่มีภาวะกระดูกสันหลังคด',
+                            onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -170,15 +171,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               );
                             },
                           ),
-                          _buildHealthCard(
-                            context,
-                            'assets/img/slide4.jpg',
-                            'แนวทางป้องกัน\nการเกิดโรค\nกระดูกสันหลังคด',
-                            () {
+                          HealthCard(
+                            imagePath: 'assets/img/slide4.jpg',
+                            title:
+                                'การป้องกัน\nและการจัดการ\nกับกระดูกสันหลังคด',
+                            onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => GuidelinesScreen()),
+                                    builder: (context) => RiskFactorsScreen()),
                               );
                             },
                           ),
@@ -201,11 +202,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       height: 175,
                       width: screenWidth - 32,
-                      child: _buildHealthCard(
-                        context,
-                        'assets/img/doctor.jpg',
-                        'รายชื่อ\nโรงพยาบาล',
-                        () {
+                      child: HealthCard(
+                        imagePath: 'assets/img/doctor.jpg',
+                        title: 'รายชื่อ\nโรงพยาบาล',
+                        onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -226,75 +226,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-Widget _buildHealthCard(
-    BuildContext context, String imagePath, String title, VoidCallback onTap) {
-  double screenWidth = MediaQuery.of(context).size.width;
-  double cardWidth = screenWidth - 32;
-
-  return Container(
-    width: cardWidth,
-    margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-    decoration: BoxDecoration(
-      color: Colors.white.withOpacity(0.9),
-      borderRadius: BorderRadius.circular(32),
-      border: Border.all(
-        color: Colors.grey.shade300,
-        width: 1.5,
-      ),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 1,
-          blurRadius: 2,
-          offset: Offset(0, 5),
-        ),
-      ],
-    ),
-    child: Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(24),
-            child: Image.asset(
-              imagePath,
-              height: 130,
-              width: cardWidth * 0.4,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Spacer(),
-                TextButton(
-                  onPressed: onTap,
-                  child: Text(
-                    'รายละเอียด >',
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
 Widget _buildPageIndicator(int currentPage) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -312,4 +243,9 @@ Widget _buildPageIndicator(int currentPage) {
       ),
     ),
   );
+}
+
+Future<bool> checkDisclaimerAccepted() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getBool('disclaimer_accepted') ?? false;
 }

@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:scoliosis_analysis_app/pages/HealthCard_Widget.dart';
 import 'package:scoliosis_analysis_app/pages/exercise_page.dart';
 import 'package:scoliosis_analysis_app/pages/hospital_page.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:scoliosis_analysis_app/pages/url_Widget.dart';
 
 class RiskGuidelinesScreen extends StatefulWidget {
   const RiskGuidelinesScreen({super.key});
@@ -14,18 +15,25 @@ class RiskGuidelinesScreen extends StatefulWidget {
 }
 
 class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
-  final Uri _url =
-      Uri.parse('https://www.vejthani.com/th/2021/12/สิ่งที่ควรทำและไม่ควรท/');
-
-  Future<void> _launchUrl() async {
-    if (!await launchUrl(_url)) {
-      throw Exception('ไม่สามารถเปิด URL นี้ได้ $_url');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    final references = [
+      ReferenceItem(
+        linkText: 'กระดูกสันหลังคดกายภาพ',
+        url: Uri.parse(
+            'https://www.sarirarak.com/single-post/กระดูกสันหลังคดกายภาพ'),
+        copyright: 'Copyright © 2022 Sarirarak Co.,.Ltd.',
+      ),
+      ReferenceItem(
+        linkText: 'สิ่งที่ควรทำและไม่ควรทำสำหรับผู้ป่วยกระดูกสันหลังคด',
+        url: Uri.parse(
+            'https://www.vejthani.com/th/2021/12/%e0%b8%aa%e0%b8%b4%e0%b9%88%e0%b8%87%e0%b8%97%e0%b8%b5%e0%b9%88%e0%b8%84%e0%b8%a7%e0%b8%a3%e0%b8%97%e0%b8%b3%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b9%84%e0%b8%a1%e0%b9%88%e0%b8%84%e0%b8%a7%e0%b8%a3%e0%b8%97/'),
+        copyright:
+            '© Vejthani Hospital | JCI Accredited International Hospital in Bangkok, Thailand',
+      ),
+    ];
     return Scaffold(
+      backgroundColor: Color(0xFFF5F9FF),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -92,93 +100,20 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
                   ],
                 ),
                 Center(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HospitalScreen()),
-                            );
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.9),
-                              borderRadius: BorderRadius.circular(32),
-                              border: Border.all(
-                                color: Colors.grey.shade300,
-                                width: 1.5,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 2,
-                                  blurRadius: 10,
-                                  offset: Offset(0, 5),
-                                ),
-                              ],
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(32),
-                                      bottom: Radius.circular(32),
-                                    ),
-                                    child: Image.asset(
-                                      "assets/img/doctor.jpg",
-                                      height: 150,
-                                      width: 175,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "  โรงพยาบาล",
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      SizedBox(height: 20),
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    HospitalScreen()),
-                                          );
-                                        },
-                                        child: Text(
-                                          'คลิกเพื่อดูรายชื่อ >',
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  child: Container(
+                    height: 175,
+                    width: MediaQuery.of(context).size.width - 32,
+                    child: HealthCard(
+                      imagePath: 'assets/img/doctor.jpg',
+                      title: 'รายชื่อ\nโรงพยาบาล',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HospitalScreen()),
+                        );
+                      },
+                    ),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -186,102 +121,28 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
                   '3. การกายภาพบำบัดเสริมสร้างกล้ามเนื้อ',
                   [
                     _buildSubsection(
-                      'ประโยชน์ของการกายภาพบำบัด',
+                      'การรักษาด้วยกายภาพบำบัด',
                       [
-                        'การเสริมสร้างกล้ามเนื้อที่เกี่ยวกับการพยุงกระดูกสันหลังเช่นการกายภาพบำบัด เนื่องจากกระดูกสันหลังคด ทำให้กล้ามเนื้อบริเวณรอบข้าง ต้องรองรับกระดูกสันหลังที่ผิดปกติ ทำให้เกิดอาการปวดและอักเสบได้',
-                        'สำหรับผู้ที่มีภาวะกระดูกสันหลังคดในระดับที่ไม่รุนแรง การรักษาโดยการทำกายภาพบำบัดจะช่วยให้กล้ามเนื้อที่ช่วยพยุงกระดูกสันหลังทำงานได้ดีขึ้น รวมถึงการฝึกท่าทางที่เหมาะสมในการป้องกันการเกิดความเครียดต่อกระดูกสันหลัง',
+                        'นักกายภาพบำบัดจะตรวจภาวะกระดูกสันหลังเพื่อประเมินภาวะคดโค้งทั้งแนวกระดูกเพื่อวางแผนการรักษาเฉพาะบุคคล เพราะความคดโค้งของแต่ละคนไม่เหมือนกัน',
+                        'การรักษาทางกายภาพบำบัด  กระดูกสันหลังคดเกิดจากกล้ามเนื้อทั้ง 2 ฝั่งทำงานไม่สมดุลกัน ดังนั้นการรักษาต้องฝึกกล้ามเนื้อให้กลับมาทำงานสมดุลกัน โดยเป็นการฝึกแบบRehab Exercise ในระยะแรกกล้ามเนื้อข้างใดที่ทำงานมากเกินไปและมีการตึงตัวจะเน้นออกกำลังกายแบบยืดเหยียดกล้ามเนื้อ ส่วนข้างที่อ่อนแรงหรือทำงานได้ไม่ดีจะเน้นออกกำลังกายเพิ่มความแข็งแรงของกล้ามเนื้อในข้างนั้น เมื่อการทำงานของกล้ามเนื้อทั้ง 2 ข้างเริ่มทำงานสมดุลกันในระยะต่อมาจะเริ่มฝึกความแข็งแรงและยืดเหยียดกล้ามเนื้อทั้ง 2 ข้าง เพื่อให้มีการเรียนรู้การทำงานของกล้ามเนื้อทั้ง 2 ฝั่งแบบสมมาตรกัน และลดการปวดเมื่อยในระยะยาว โดยไม่ต้องทำการผ่าตัด',
                       ],
                     ),
                   ],
                 ),
                 Center(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ExerciseScreen()),
-                            );
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.9),
-                              borderRadius: BorderRadius.circular(32),
-                              border: Border.all(
-                                color: Colors.grey.shade300,
-                                width: 1.5,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 2,
-                                  blurRadius: 10,
-                                  offset: Offset(0, 5),
-                                ),
-                              ],
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(32),
-                                      bottom: Radius.circular(32),
-                                    ),
-                                    child: Image.asset(
-                                      "assets/img/posture.png",
-                                      height: 130,
-                                      width: 155,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "  การกายภาพบำบัด\n  ด้วยตนเอง",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      SizedBox(height: 20),
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ExerciseScreen()),
-                                          );
-                                        },
-                                        child: Text(
-                                          'ข้อมูลเพิ่มเติม >',
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  child: Container(
+                    height: 175,
+                    width: MediaQuery.of(context).size.width - 32,
+                    child: HealthCard(
+                        imagePath: 'assets/img/posture.png',
+                        title: 'การดูแลกระดูกสันหลัง',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ExerciseScreen()),
+                          );
+                        }),
                   ),
                 ),
                 _buildSection(
@@ -298,7 +159,7 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
                   ],
                 ),
                 _buildTipCard(),
-                _buildReferenceFooter(),
+                ReferenceFooter(references: references),
               ],
             ),
           ),
@@ -554,68 +415,6 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildReferenceFooter() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
-        ),
-      ),
-      child: Column(
-        children: [
-          Text(
-            'แหล่งอ้างอิง',
-            style: GoogleFonts.sarabun(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF004aad),
-            ),
-          ),
-          SizedBox(height: 10),
-          InkWell(
-            onTap: _launchUrl,
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.link, color: Color(0xFF0BD8F3)),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: Text(
-                      'สิ่งที่ควรทำและไม่ควรทำสำหรับผู้ป่วยกระดูกสันหลังคด',
-                      style: GoogleFonts.sarabun(
-                        fontSize: 14,
-                        color: Colors.blue[800],
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ),
-                  Icon(Icons.open_in_new, color: Colors.grey),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(height: 10),
-          Text(
-            'โรงพยาบาลเวชธานี © 2025',
-            style: GoogleFonts.sarabun(
-              fontSize: 12,
-              color: Colors.grey,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
       ),
     );
   }

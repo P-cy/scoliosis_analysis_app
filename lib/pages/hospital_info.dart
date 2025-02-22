@@ -459,7 +459,7 @@ Map<String, Map<String, List<Map<String, String>>>> regions = {
     ],
   },
   'ภาคกลาง': {
-    'กรุงเทพมหานคร (เขตปกครองพิเศษ)': [
+    'กรุงเทพมหานคร': [
       {
         'name': 'โรงพยาบาลกรุงเทพ (Bangkok Hospital)',
         'address':

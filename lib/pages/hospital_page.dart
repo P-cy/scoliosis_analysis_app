@@ -24,6 +24,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFF5F9FF),
       appBar: AppBar(
         elevation: 0.0,
         toolbarHeight: 60,
@@ -210,7 +211,8 @@ class _HospitalScreenState extends State<HospitalScreen> {
                                           Center(
                                             child: ElevatedButton.icon(
                                               icon: Icon(Icons.open_in_new),
-                                              label: Text("เปิดเว็บไซต์"),
+                                              label: Text("เปิดเว็บไซต์",
+                                                  style: GoogleFonts.sarabun()),
                                               style: ElevatedButton.styleFrom(
                                                 backgroundColor:
                                                     Color(0xFF0BD8F3),

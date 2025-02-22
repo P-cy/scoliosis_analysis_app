@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:scoliosis_analysis_app/pages/url_Widget.dart';
 
 class ExerciseScreen extends StatelessWidget {
   const ExerciseScreen({super.key});
@@ -9,6 +10,7 @@ class ExerciseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFF5F9FF),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -88,6 +90,17 @@ class ExerciseScreen extends StatelessWidget {
                   'ข้างละ 10 ครั้งต่อเซต วันละ 2-3 เซต',
                 ),
                 _buildClosing(),
+                ReferenceFooter(
+                  references: [
+                    ReferenceItem(
+                      linkText:
+                          'กระดูกสันหลังคดกายภาพบำบัดอย่างไร รักษาหายได้ไหม',
+                      url: Uri.parse(
+                          'https://www.sarirarak.com/single-post/%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B9%E0%B8%81%E0%B8%AA%E0%B8%B1%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%84%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A2%E0%B8%A0%E0%B8%B2%E0%B8%9E?fbclid=IwY2xjawImYQNleHRuA2FlbQIxMAABHTRHvlBZUyrHOnp5PlfEVesYpbS7qXsgE_LPfPMfdDDpxXf1tpng_eITQg_aem_umVgmAYoxoCsjriKrXoOJQ#:~:text=%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A2%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%9A%E0%B8%B3%E0%B8%9A%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B9%E0%B8%81%E0%B8%AA%E0%B8%B1%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%84%E0%B8%94&text=%E0%B9%81%E0%B8%A2%E0%B8%81%E0%B8%82%E0%B8%B2%E0%B9%80%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%81%E0%B8%A7%E0%B9%89%E0%B8%B2%E0%B8%87,%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%A5%E0%B8%B0%202%2D3%20%E0%B9%80%E0%B8%8B%E0%B8%95'),
+                      copyright: 'Copyright © 2022 Sarirarak Co.,.Ltd.',
+                    ),
+                  ],
+                ),
               ],
             ),
           ),

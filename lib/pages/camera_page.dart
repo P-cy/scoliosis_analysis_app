@@ -58,7 +58,7 @@ class _CameraScreenState extends State<CameraScreen> {
           await getModelPath('assets/ml/scoliosis_analysis_model.tflite');
       labeler = ImageLabeler(
         options: LocalLabelerOptions(
-          confidenceThreshold: 0.7,
+          confidenceThreshold: 0.65,
           modelPath: modelPath,
         ),
       );
@@ -78,7 +78,6 @@ class _CameraScreenState extends State<CameraScreen> {
         diagnosisType = "";
         isProcessing = true;
       });
-      
 
       XFile? selectedImage =
           await imagePicker.pickImage(source: ImageSource.gallery);
@@ -191,9 +190,9 @@ class _CameraScreenState extends State<CameraScreen> {
 
   void setNoSpineFoundResult() {
     setState(() {
-      diagnosisType = "ไม่พบกระดูกสันหลัง";
+      diagnosisType = "ไม่สามารถวิเคราะห์ได้";
       diagnosisResult =
-          "AI ไม่สามารถวิเคราะห์กระดูกสันหลังได้ กรุณาตรวจสอบรูปภาพอีกครั้ง หรือถ่ายภาพใหม่ที่ชัดเจนกว่านี้";
+          "AI ไม่สามารถวิเคราะห์ได้ กรุณาตรวจสอบรูปภาพอีกครั้ง หรือถ่ายภาพใหม่ที่ชัดเจนกว่านี้";
       confidenceScore = 0.0;
     });
   }
@@ -286,6 +285,7 @@ class _CameraScreenState extends State<CameraScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFF5F9FF),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
