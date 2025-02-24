@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:scoliosis_analysis_app/pages/HealthCard_Widget.dart';
+import 'package:scoliosis_analysis_app/pages/healthcard_widget.dart';
 import 'package:scoliosis_analysis_app/pages/hospital_page.dart';
 import 'package:scoliosis_analysis_app/pages/info_page.dart';
 import 'package:scoliosis_analysis_app/pages/guidelines_page.dart';

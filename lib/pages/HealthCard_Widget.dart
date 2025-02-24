@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 class HealthCard extends StatelessWidget {
@@ -6,11 +8,11 @@ class HealthCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const HealthCard({
-    Key? key,
+    super.key,
     required this.imagePath,
     required this.title,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

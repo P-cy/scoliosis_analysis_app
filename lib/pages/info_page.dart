@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scoliosis_analysis_app/pages/guidelines_page.dart';
-import 'package:scoliosis_analysis_app/pages/url_Widget.dart';
+import 'package:scoliosis_analysis_app/pages/url_widget.dart';
 
 class SpineInfoScreen extends StatefulWidget {
   const SpineInfoScreen({super.key});
