@@ -1,5 +1,7 @@
 // reference_footer.dart
 
+// ignore_for_file: avoid_print, unnecessary_to_list_in_spreads
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -21,10 +23,10 @@ class ReferenceFooter extends StatelessWidget {
   final List<ReferenceItem> references;
 
   const ReferenceFooter({
-    Key? key,
+    super.key,
     this.title = 'แหล่งอ้างอิง',
     required this.references,
-  }) : super(key: key);
+  });
 
   Future<void> _launchUrl(Uri url) async {
     try {
