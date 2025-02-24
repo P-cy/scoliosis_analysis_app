@@ -431,7 +431,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      "ถึงแม้ผลจะอยู่ในเกณฑ์ปกติ แต่การดูแลสุขภาพ\nหลังของคุณยังเป็นสิ่งที่สำคัญ",
+                      "ถึงแม้ผลจะอยู่ในเกณฑ์ปกติ แต่การดูแลสุขภาพ\nหลังของคุณยังเป็นสิ่งที่สำคัญ\nเพื่อความแน่ใจและการวินิจฉัยที่ถูกต้องแนะนำให้ไปพบแพทย์",
                       style: TextStyle(fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
