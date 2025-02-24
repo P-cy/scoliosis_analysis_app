@@ -14,6 +14,20 @@ class SpineInfoScreen extends StatefulWidget {
 class _SpineInfoScreenState extends State<SpineInfoScreen> {
   @override
   Widget build(BuildContext context) {
+    final references = [
+      ReferenceItem(
+        linkText:
+            'กู้พงษ์ ศิริบำรุงวงศ์.(2565). โรคกระดูกสันหลังคด ปัญหาที่ควรได้รับการรักษา. สืบค้นจาก https://kdmshospital.com/article/symptoms-and-treatment-of-scoliosis/',
+        url: Uri.parse(
+            'https://kdmshospital.com/article/symptoms-and-treatment-of-scoliosis/'),
+      ),
+      ReferenceItem(
+        linkText:
+            'กรีนเบลล์ สหคลินิก.(2568). กระดูกสันหลังคด Scoliosis: อาการและการรักษา. สืบค้นจาก https://greenbellclinic.com/medical-blog-th-th/กระดูกสันหลังคด-scoliosis-อาการ/',
+        url: Uri.parse(
+            'https://greenbellclinic.com/medical-blog-th-th/กระดูกสันหลังคด-scoliosis-อาการ/'),
+      ),
+    ];
     return Scaffold(
       backgroundColor: Color(0xFFF5F9FF),
       appBar: AppBar(
@@ -148,6 +162,18 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
                   ),
                 ],
               ),
+              _buildSection(
+                '5. ปัจจัยเสี่ยง',
+                [
+                  _buildSubsection(
+                    '5.1 ปัจจัยเสี่ยงของกระดูกสันหลังคด',
+                    [
+                      'กระดูกสันหลังคดสามารถเกิดจากหลายสาเหตุ ทั้งภายในและภายนอกร่างกาย. สาเหตุหลักคือพันธุกรรม โดยเฉพาะในครอบครัวที่มีประวัติ ความผิดปกติของกระดูกตั้งแต่กำเนิดก็เป็นสาเหตุอีกอย่าง ',
+                      'ปัจจัยเสี่ยงอื่นๆ ได้แก่ อายุ, เพศ, และพฤติกรรมการใช้ชีวิตโดยวัยรุ่นหญิงมีความเสี่ยงสูงกว่าชาย ซึ่งการนั่งทำงานหน้าคอมพิวเตอร์เป็นเวลานานโดยไม่มีการปรับท่าทาง การออกกำลังกายไม่สม่ำเสมอ หรือ การยกของหนักไม่ถูกวิธีก็เป็นปัจจัยเสี่ยง โดยการทำ Posture analysis ช่วยวิเคราะห์ท่าทางและระบุปัญหาได้ กายภาพบำบัดและการออกกำลังกายเฉพาะส่วน (Target Exercise) ช่วยป้องกันและบรรเทาอาการได้ดี',
+                    ],
+                  ),
+                ],
+              ),
               Padding(
                 padding: EdgeInsets.all(16),
                 child: Card(
@@ -217,16 +243,7 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
                   ),
                 ),
               ),
-              ReferenceFooter(
-                references: [
-                  ReferenceItem(
-                    linkText: 'กู้พงษ์ ศิริบำรุงวงศ์.(2565). โรคกระดูกสันหลังคด ปัญหาที่ควรได้รับการรักษา. สืบค้นจาก https://kdmshospital.com/article/symptoms-and-treatment-of-scoliosis/',
-                    url: Uri.parse(
-                        'https://kdmshospital.com/article/symptoms-and-treatment-of-scoliosis/'),
-                    
-                  ),
-                ],
-              ),
+              ReferenceFooter(references: references),
             ]),
           ),
         ),
