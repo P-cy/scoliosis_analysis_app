@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:scoliosis_analysis_app/pages/url_widget.dart';
 
 class ExerciseScreen extends StatelessWidget {
@@ -18,7 +17,7 @@ class ExerciseScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           'การดูแลกระดูกสันหลัง',
-          style: GoogleFonts.sarabun(
+          style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -94,10 +93,10 @@ class ExerciseScreen extends StatelessWidget {
                   references: [
                     ReferenceItem(
                       linkText:
-                          'กระดูกสันหลังคดกายภาพบำบัดอย่างไร รักษาหายได้ไหม',
+                          'สรีรารัก คลินิกกายภาพบำบัด.(2565). กระดูกสันหลังคด กายภาพบำบัดอย่างไร รักษาหายได้ไหม. สืบค้นจาก https://www.sarirarak.com/single-post/กระดูกสันหลังคดกายภาพ',
                       url: Uri.parse(
-                          'https://www.sarirarak.com/single-post/%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B9%E0%B8%81%E0%B8%AA%E0%B8%B1%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%84%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A2%E0%B8%A0%E0%B8%B2%E0%B8%9E?fbclid=IwY2xjawImYQNleHRuA2FlbQIxMAABHTRHvlBZUyrHOnp5PlfEVesYpbS7qXsgE_LPfPMfdDDpxXf1tpng_eITQg_aem_umVgmAYoxoCsjriKrXoOJQ#:~:text=%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A2%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%9A%E0%B8%B3%E0%B8%9A%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B9%E0%B8%81%E0%B8%AA%E0%B8%B1%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%84%E0%B8%94&text=%E0%B9%81%E0%B8%A2%E0%B8%81%E0%B8%82%E0%B8%B2%E0%B9%80%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%81%E0%B8%A7%E0%B9%89%E0%B8%B2%E0%B8%87,%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%A5%E0%B8%B0%202%2D3%20%E0%B9%80%E0%B8%8B%E0%B8%95'),
-                      copyright: 'Copyright © 2022 Sarirarak Co.,.Ltd.',
+                          'https://www.sarirarak.com/single-post/กระดูกสันหลังคดกายภาพ'),
+                     
                     ),
                   ],
                 ),
@@ -154,7 +153,7 @@ class ExerciseScreen extends StatelessWidget {
           SizedBox(height: 20),
           Text(
             'ท่าออกกำลังกายเพื่อ',
-            style: GoogleFonts.sarabun(
+            style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -162,7 +161,7 @@ class ExerciseScreen extends StatelessWidget {
           ),
           Text(
             'เสริมความแข็งแรงกระดูกสันหลัง',
-            style: GoogleFonts.sarabun(
+            style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -189,7 +188,7 @@ class ExerciseScreen extends StatelessWidget {
             children: [
               Text(
                 'ประโยชน์ของการออกกำลังกาย',
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF004aad),
@@ -198,7 +197,7 @@ class ExerciseScreen extends StatelessWidget {
               SizedBox(height: 10),
               Text(
                 'การเสริมสร้างกล้ามเนื้อที่เกี่ยวกับการพยุงกระดูกสันหลังเช่นการกายภาพบำบัด เนื่องจากกระดูกสันหลังคด ทำให้กล้ามเนื้อบริเวณรอบข้าง ต้องรองรับกระดูกสันหลังที่ผิดปกติ ทำให้เกิดอาการปวดและอักเสบได้สำหรับผู้ที่มีภาวะกระดูกสันหลังคดในระดับที่ไม่รุนแรง การรักษาโดยการทำกายภาพบำบัดจะช่วยให้กล้ามเนื้อที่ช่วยพยุงกระดูกสันหลังทำงานได้ดีขึ้น',
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 14,
                   color: Colors.grey[700],
                 ),
@@ -238,7 +237,7 @@ class ExerciseScreen extends StatelessWidget {
                   Expanded(
                     child: Text(
                       title,
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF004aad),
@@ -290,7 +289,7 @@ class ExerciseScreen extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: 'คำอธิบาย: ',
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
@@ -298,7 +297,7 @@ class ExerciseScreen extends StatelessWidget {
                     ),
                     TextSpan(
                       text: description,
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[700],
                       ),
@@ -312,7 +311,7 @@ class ExerciseScreen extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: 'จำนวน: ',
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
@@ -320,7 +319,7 @@ class ExerciseScreen extends StatelessWidget {
                     ),
                     TextSpan(
                       text: repetition,
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[700],
                       ),
@@ -357,7 +356,7 @@ class ExerciseScreen extends StatelessWidget {
               SizedBox(height: 10),
               Text(
                 'ข้อแนะนำในการออกกำลังกาย',
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -367,7 +366,7 @@ class ExerciseScreen extends StatelessWidget {
               Text(
                 'ควรปฏิบัติตามท่าบริหารอย่างสม่ำเสมอ เพื่อเสริมสร้างความแข็งแรงของกระดูกสันหลัง และลดความเสี่ยงในการเกิดภาวะกระดูกสันหลังคด หากรู้สึกปวดหรือไม่สบายระหว่างการออกกำลังกาย ควรหยุดทันทีและปรึกษาแพทย์',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 14,
                   color: Colors.white,
                 ),

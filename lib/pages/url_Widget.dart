@@ -3,18 +3,15 @@
 // ignore_for_file: avoid_print, unnecessary_to_list_in_spreads
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ReferenceItem {
   final String linkText;
   final Uri url;
-  final String copyright;
 
   ReferenceItem({
     required this.linkText,
     required this.url,
-    required this.copyright,
   });
 }
 
@@ -53,7 +50,7 @@ class ReferenceFooter extends StatelessWidget {
         children: [
           Text(
             title,
-            style: GoogleFonts.sarabun(
+            style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: const Color(0xFF004aad),
@@ -79,10 +76,9 @@ class ReferenceFooter extends StatelessWidget {
                               Expanded(
                                 child: Text(
                                   reference.linkText,
-                                  style: GoogleFonts.sarabun(
+                                  style: TextStyle(
                                     fontSize: 14,
                                     color: Colors.blue[800],
-                                    decoration: TextDecoration.underline,
                                   ),
                                 ),
                               ),
@@ -91,16 +87,7 @@ class ReferenceFooter extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 8),
-                      Text(
-                        reference.copyright,
-                        style: GoogleFonts.sarabun(
-                          fontSize: 12,
-                          color: Colors.grey,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: 10,)
                     ],
                   ))
               .toList(),

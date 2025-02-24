@@ -1,7 +1,6 @@
 // ignore_for_file: sized_box_for_whitespace, deprecated_member_use, unnecessary_string_escapes
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:scoliosis_analysis_app/pages/healthcard_widget.dart';
 import 'package:scoliosis_analysis_app/pages/hospital_page.dart';
 import 'package:scoliosis_analysis_app/pages/info_page.dart';
@@ -93,8 +92,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Text(
                       'ยินดีต้อนรับ...',
-                      style: GoogleFonts.sarabun(
-                        fontSize: 32,
+                      style: TextStyle(
+                       fontSize: 32,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
@@ -130,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Text(
                       'โรคกระดูกสันหลังคด การรักษา และการป้องกัน',
-                      style: GoogleFonts.montserrat(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.grey.shade700,
@@ -193,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(height: 16),
                     Text(
                       'รายชื่อโรงพยาบาล',
-                      style: GoogleFonts.montserrat(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.grey.shade700,

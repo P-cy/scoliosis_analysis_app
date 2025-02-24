@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:scoliosis_analysis_app/pages/guidelines_page.dart';
 import 'package:scoliosis_analysis_app/pages/url_widget.dart';
 
@@ -170,7 +169,7 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
                         SizedBox(height: 10),
                         Text(
                           'คำแนะนำสำคัญ',
-                          style: GoogleFonts.sarabun(
+                          style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -180,7 +179,7 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
                         Text(
                           'หากสังเกตพบความผิดปกติของกระดูกสันหลัง ควรปรึกษาแพทย์ผู้เชี่ยวชาญโดยเร็ว โดยเฉพาะในเด็กและวัยรุ่นที่กำลังเจริญเติบโต การตรวจพบและรักษาตั้งแต่เนิ่นๆ จะช่วยป้องกันการเกิดภาวะแทรกซ้อนและให้ผลการรักษาที่ดีกว่า',
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.sarabun(
+                          style: TextStyle(
                             fontSize: 14,
                             color: Colors.white,
                           ),
@@ -198,7 +197,7 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
                           icon: Icon(Icons.touch_app, color: Color(0xFF004aad)),
                           label: Text(
                             'ดูแนวทางการป้องกัน',
-                            style: GoogleFonts.sarabun(
+                            style: TextStyle(
                               color: Color(0xFF004aad),
                               fontWeight: FontWeight.bold,
                             ),
@@ -221,10 +220,10 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
               ReferenceFooter(
                 references: [
                   ReferenceItem(
-                    linkText: 'โรคกระดูกสันหลังคด ปัญหาที่ควรได้รับการรักษา',
+                    linkText: 'กู้พงษ์ ศิริบำรุงวงศ์.(2565). โรคกระดูกสันหลังคด ปัญหาที่ควรได้รับการรักษา. สืบค้นจาก https://kdmshospital.com/article/symptoms-and-treatment-of-scoliosis/',
                     url: Uri.parse(
                         'https://kdmshospital.com/article/symptoms-and-treatment-of-scoliosis/'),
-                    copyright: '© 2025 เคดีเอ็มเอ',
+                    
                   ),
                 ],
               ),
@@ -280,7 +279,7 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
           SizedBox(height: 20),
           Text(
             'โรคกระดูกสันหลังคด',
-            style: GoogleFonts.sarabun(
+            style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -288,7 +287,7 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
           ),
           Text(
             'สาเหตุ ลักษณะ และการวินิจฉัย',
-            style: GoogleFonts.sarabun(
+            style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -315,7 +314,7 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
             children: [
               Text(
                 'กระดูกสันหลังคดคืออะไร?',
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF004aad),
@@ -324,7 +323,7 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
               SizedBox(height: 10),
               Text(
                 'กระดูกสันหลังคด (Scoliosis) คือภาวะที่กระดูกสันหลังมีการโค้งงอผิดปกติไปด้านข้าง ทำให้กระดูกสันหลังไม่ตรงตามแนวธรรมชาติ สามารถเกิดได้ในทุกวัย ตั้งแต่วัยเด็ก วัยรุ่น ผู้ใหญ่ จนถึงผู้สูงอายุ โดยมีสาเหตุและความรุนแรงที่แตกต่างกันไป การทำความเข้าใจเกี่ยวกับโรคนี้จะช่วยให้สามารถตรวจพบและรักษาได้อย่างทันท่วงที',
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 14,
                   color: Colors.grey[700],
                 ),
@@ -363,7 +362,7 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
                   Expanded(
                     child: Text(
                       title,
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF004aad),
@@ -393,7 +392,7 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
           padding: EdgeInsets.symmetric(vertical: 8),
           child: Text(
             title,
-            style: GoogleFonts.sarabun(
+            style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: Colors.black87,
@@ -418,7 +417,7 @@ class _SpineInfoScreenState extends State<SpineInfoScreen> {
                   Expanded(
                     child: Text(
                       point,
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[700],
                       ),

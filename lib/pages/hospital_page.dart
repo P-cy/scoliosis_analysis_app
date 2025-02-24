@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:scoliosis_analysis_app/pages/hospital_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -31,7 +30,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
         centerTitle: true,
         title: Text(
           "โรงพยาบาล",
-          style: GoogleFonts.sarabun(
+          style: TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.w600,
             color: Colors.white,
@@ -71,7 +70,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
                     children: [
                       Text(
                         "เลือกภูมิภาค",
-                        style: GoogleFonts.sarabun(
+                        style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: Color(0xFF004aad),
@@ -88,7 +87,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
                           value: selectedRegion,
                           hint: Text(
                             "ภูมิภาค",
-                            style: GoogleFonts.sarabun(fontSize: 16),
+                            style: TextStyle(fontSize: 16),
                           ),
                           isExpanded: true,
                           underline: Container(),
@@ -103,7 +102,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
                               value: region,
                               child: Text(
                                 region,
-                                style: GoogleFonts.sarabun(fontSize: 16),
+                                style: TextStyle(fontSize: 16),
                               ),
                             );
                           }).toList(),
@@ -113,7 +112,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
                         SizedBox(height: 20),
                         Text(
                           "เลือกจังหวัด",
-                          style: GoogleFonts.sarabun(
+                          style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
                             color: Color(0xFF004aad),
@@ -130,7 +129,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
                             value: selectedProvince,
                             hint: Text(
                               "จังหวัด",
-                              style: GoogleFonts.sarabun(fontSize: 16),
+                              style: TextStyle(fontSize: 16),
                             ),
                             isExpanded: true,
                             underline: Container(),
@@ -146,7 +145,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
                                 value: province,
                                 child: Text(
                                   province,
-                                  style: GoogleFonts.sarabun(fontSize: 16),
+                                  style: TextStyle(fontSize: 16),
                                 ),
                               );
                             }).toList(),
@@ -179,7 +178,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
                                       ),
                                       title: Text(
                                         clinic['name']!,
-                                        style: GoogleFonts.sarabun(
+                                        style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                           color: Color(0xFF004aad),
@@ -212,7 +211,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
                                             child: ElevatedButton.icon(
                                               icon: Icon(Icons.open_in_new),
                                               label: Text("เปิดเว็บไซต์",
-                                                  style: GoogleFonts.sarabun()),
+                                                  style: TextStyle()),
                                               style: ElevatedButton.styleFrom(
                                                 backgroundColor:
                                                     Color(0xFF0BD8F3),
@@ -235,7 +234,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
                                         TextButton(
                                           child: Text(
                                             "ปิด",
-                                            style: GoogleFonts.sarabun(
+                                            style: TextStyle(
                                               color: Colors.grey[600],
                                             ),
                                           ),
@@ -273,7 +272,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
                                           children: [
                                             Text(
                                               clinic['name']!,
-                                              style: GoogleFonts.sarabun(
+                                              style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.black87,
@@ -282,7 +281,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
                                             SizedBox(height: 4),
                                             Text(
                                               clinic['address']!,
-                                              style: GoogleFonts.sarabun(
+                                              style: TextStyle(
                                                 fontSize: 14,
                                                 color: Colors.grey[600],
                                               ),
@@ -328,7 +327,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
             children: [
               Text(
                 label,
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: Colors.grey[600],
@@ -337,7 +336,7 @@ class _HospitalScreenState extends State<HospitalScreen> {
               SizedBox(height: 4),
               Text(
                 value,
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 16,
                   color: Colors.black87,
                 ),

@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:scoliosis_analysis_app/pages/url_widget.dart';
 import 'package:scoliosis_analysis_app/pages/exercise_page.dart';
 
@@ -71,7 +70,7 @@ class _RiskFactorsScreenState extends State<RiskFactorsScreen> {
                         const SizedBox(height: 10),
                         Text(
                           'คำแนะนำในการป้องกัน',
-                          style: GoogleFonts.sarabun(
+                          style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -81,7 +80,7 @@ class _RiskFactorsScreenState extends State<RiskFactorsScreen> {
                         Text(
                           'การตระหนักถึงปัจจัยเสี่ยงและการปรับเปลี่ยนพฤติกรรมการใช้ชีวิตเป็นสิ่งสำคัญในการป้องกันภาวะกระดูกสันหลังคด',
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.sarabun(
+                          style: TextStyle(
                             fontSize: 14,
                             color: Colors.white,
                           ),
@@ -97,7 +96,7 @@ class _RiskFactorsScreenState extends State<RiskFactorsScreen> {
                               color: Color(0xFF004aad)),
                           label: Text(
                             'ไปยังท่ากายภาพบำบัด',
-                            style: GoogleFonts.sarabun(
+                            style: TextStyle(
                               color: Color(0xFF004aad),
                               fontWeight: FontWeight.bold,
                             ),
@@ -119,10 +118,10 @@ class _RiskFactorsScreenState extends State<RiskFactorsScreen> {
               ReferenceFooter(
                 references: [
                   ReferenceItem(
-                    linkText: 'กระดูกสันหลังคด Scoliosis: อาการและการรักษา',
+                    linkText: 'กรีนเบลล์ สหคลินิก.(2568). กระดูกสันหลังคด Scoliosis: อาการและการรักษา. สืบค้นจาก https://greenbellclinic.com/medical-blog-th-th/กระดูกสันหลังคด-scoliosis-อาการ/',
                     url: Uri.parse(
-                        'https://greenbellclinic.com/medical-blog-th-th/%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B9%E0%B8%81%E0%B8%AA%E0%B8%B1%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%84%E0%B8%94-scoliosis-%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A3/'),
-                    copyright: '© 2025 Greenbell Medical Clinic',
+                        'https://greenbellclinic.com/medical-blog-th-th/กระดูกสันหลังคด-scoliosis-อาการ/'),
+                   
                   ),
                 ],
               ),
@@ -178,7 +177,7 @@ class _RiskFactorsScreenState extends State<RiskFactorsScreen> {
           const SizedBox(height: 20),
           Text(
             'การป้องกันและการจัดการ\nกับกระดูกสันหลังคดในชีวิตประจำวัน',
-            style: GoogleFonts.sarabun(
+            style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -205,7 +204,7 @@ class _RiskFactorsScreenState extends State<RiskFactorsScreen> {
             children: [
               Text(
                 'การป้องกันและการจัดการกับกระดูกสันหลังคด',
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: const Color(0xFF004aad),
@@ -214,7 +213,7 @@ class _RiskFactorsScreenState extends State<RiskFactorsScreen> {
               const SizedBox(height: 10),
               Text(
                 'การป้องกันกระดูกสันหลังคดเป็นสิ่งสำคัญมาก ท่านสามารถลดความเสี่ยงได้โดยการปรับเปลี่ยนท่าทางและออกกำลังกายอย่างถูกวิธี นอกจากนี้ การนั่งทำงานควรใช้เก้าอี้ที่รองรับหลังอย่างเหมาะสม และควรยืดเหยียดร่างกายทุกๆ 30 นาที',
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 14,
                   color: Colors.grey[700],
                 ),
@@ -222,7 +221,7 @@ class _RiskFactorsScreenState extends State<RiskFactorsScreen> {
               const SizedBox(height: 16),
               Text(
                 'การจัดการกระดูกสันหลังคดสามารถทำได้หลายวิธี การออกกำลังกายเฉพาะส่วนช่วยเสริมสร้างกล้ามเนื้อหลัง การทำกายภาพบำบัดช่วยปรับสมดุลของร่างกาย และการวิเคราะห์ท่าทางช่วยแก้ไขการยืนและเดินที่ไม่ถูกต้อง',
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 14,
                   color: Colors.grey[700],
                 ),
@@ -261,7 +260,7 @@ class _RiskFactorsScreenState extends State<RiskFactorsScreen> {
                   Expanded(
                     child: Text(
                       'วิธีป้องกันและจัดการ',
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: const Color(0xFF004aad),
@@ -282,7 +281,7 @@ class _RiskFactorsScreenState extends State<RiskFactorsScreen> {
               const SizedBox(height: 16),
               Text(
                 'นอกจากนี้ การนอนบนเตียงที่เหมาะสมและการยกของอย่างถูกวิธีช่วยป้องกันกระดูกสันหลังคดได้ ควรหลีกเลี่ยงการนั่งหรือยืนในท่าเดียวนานๆ และควรสังเกตอาการผิดปกติของร่างกาย หากพบความผิดปกติ ควรปรึกษาแพทย์เพื่อรับการรักษาที่เหมาะสมโดยเร็ว',
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 14,
                   color: Colors.grey[700],
                 ),
@@ -315,7 +314,7 @@ class _RiskFactorsScreenState extends State<RiskFactorsScreen> {
           Expanded(
             child: Text(
               text,
-              style: GoogleFonts.sarabun(
+              style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey[700],
               ),

@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +57,7 @@ class _CameraScreenState extends State<CameraScreen> {
           await getModelPath('assets/ml/scoliosis_analysis_model.tflite');
       labeler = ImageLabeler(
         options: LocalLabelerOptions(
-          confidenceThreshold: 0.65,
+          confidenceThreshold: 0.7,
           modelPath: modelPath,
         ),
       );
@@ -129,7 +128,7 @@ class _CameraScreenState extends State<CameraScreen> {
       }
     } catch (e) {
       print('Error capturing image: $e');
-      showErrorDialog('เกิดข้อผิดพลาดในการถ่ายรูป');
+      showErrorDialog('เกิดข้อผิดพลาดในการถ่ายภาพ');
       setState(() {
         isProcessing = false;
       });
@@ -167,8 +166,8 @@ class _CameraScreenState extends State<CameraScreen> {
 
       if (originalImage == null) return null;
 
-      final width = 224;
-      final height = 224;
+      final width = 640;
+      final height = 640;
 
       final resizedImage = img.copyResize(originalImage,
           width: width,
@@ -192,7 +191,7 @@ class _CameraScreenState extends State<CameraScreen> {
     setState(() {
       diagnosisType = "ไม่สามารถวิเคราะห์ได้";
       diagnosisResult =
-          "AI ไม่สามารถวิเคราะห์ได้ กรุณาตรวจสอบรูปภาพอีกครั้ง หรือถ่ายภาพใหม่ที่ชัดเจนกว่านี้";
+          "ไม่สามารถวิเคราะห์ได้ กรุณาตรวจสอบรูปภาพอีกครั้ง";
       confidenceScore = 0.0;
     });
   }
@@ -220,7 +219,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
             if (text.contains("scoliosis")) {
               bestDiagnosis = "Scoliosis";
-            } else if (text.contains("normal") || text.contains("healthy")) {
+            } else if (text.contains("normal")) {
               bestDiagnosis = "Normal";
             } else {
               // กรณีเจอกระดูกสันหลังแต่ไม่ชัดเจนว่าปกติหรือผิดปกติ
@@ -239,7 +238,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
         if (bestDiagnosis == "Uncertain") {
           diagnosisResult =
-              "พบกระดูกสันหลัง แต่ไม่สามารถวิเคราะห์ได้ชัดเจน กรุณาถ่ายภาพใหม่";
+              "ไม่สามารถวิเคราะห์ได้ชัดเจน กรุณาถ่ายภาพใหม่";
         }
       } else {
         // ไม่พบข้อมูลเกี่ยวกับกระดูกสันหลังเลย
@@ -258,12 +257,12 @@ class _CameraScreenState extends State<CameraScreen> {
       context: this.context,
       builder: (context) => AlertDialog(
         title: Text('แจ้งเตือน',
-            style: GoogleFonts.sarabun(fontWeight: FontWeight.bold)),
-        content: Text(message, style: GoogleFonts.sarabun()),
+            style: TextStyle(fontWeight: FontWeight.bold)),
+        content: Text(message, style: TextStyle()),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('ตกลง', style: GoogleFonts.sarabun()),
+            child: Text('ตกลง', style: TextStyle()),
           ),
         ],
       ),
@@ -292,8 +291,8 @@ class _CameraScreenState extends State<CameraScreen> {
         toolbarHeight: 60,
         centerTitle: true,
         title: Text(
-          'วิเคราะห์กระดูกสันหลัง',
-          style: GoogleFonts.sarabun(
+          'วิเคราะห์ภาวะกระดูกสันหลังคด',
+          style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -376,14 +375,14 @@ class _CameraScreenState extends State<CameraScreen> {
                   if (diagnosisType.isEmpty) ...[
                     Text(
                       "เลือกรูป/ถ่ายภาพเพื่อดูผลลัพธ์",
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                   ] else if (diagnosisType == "Scoliosis") ...[
                     Text(
                       "จากผลการวิเคราะห์\nพบว่าคุณอาจมีภาวะกระดูกสันหลังคด",
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                           color: Colors.redAccent),
@@ -392,26 +391,26 @@ class _CameraScreenState extends State<CameraScreen> {
                     const SizedBox(height: 10),
                     Text(
                       "โอกาสที่คุณจะเป็นโรคนี้อยู่ที่",
-                      style: GoogleFonts.sarabun(fontSize: 18),
+                      style: TextStyle(fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
                     Text(
                       "${confidenceScore.toStringAsFixed(2)}%",
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Colors.red),
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      "เพื่อความแน่ใจและการวินิจฉัยที่ถูกต้อง\nแนะนำให้คุณศึกษาข้อมูลเพิ่มเติมเกี่ยวกับภาวะนี้ค่ะ",
-                      style: GoogleFonts.sarabun(fontSize: 16),
+                      "เพื่อความแน่ใจและการวินิจฉัยที่ถูกต้อง\nแนะนำให้ไปพบแพทย์",
+                      style: TextStyle(fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                   ] else if (diagnosisType == "Normal") ...[
                     Text(
-                      "จากการวิเคราะห์ผล\nแสดงให้เห็นว่าคุณอยู่ในภาวะปกติ",
-                      style: GoogleFonts.sarabun(
+                      "จากการวิเคราะห์ผล\nพบว่าคุณอยู่ในภาวะปกติ",
+                      style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                           color: Colors.green),
@@ -420,20 +419,20 @@ class _CameraScreenState extends State<CameraScreen> {
                     const SizedBox(height: 10),
                     Text(
                       "คุณอยู่ในเกณฑ์ปกติ",
-                      style: GoogleFonts.sarabun(fontSize: 18),
+                      style: TextStyle(fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
                     Text(
                       "${confidenceScore.toStringAsFixed(2)}%",
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Colors.green),
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      "ถึงแม้ผลจะอยู่ในเกณฑ์ปกติ แต่การดูแลสุขภาพ\nหลังของคุณยังเป็นสิ่งสำคัญ",
-                      style: GoogleFonts.sarabun(fontSize: 16),
+                      "ถึงแม้ผลจะอยู่ในเกณฑ์ปกติ แต่การดูแลสุขภาพ\nหลังของคุณยังเป็นสิ่งที่สำคัญ",
+                      style: TextStyle(fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 16),
@@ -487,7 +486,7 @@ class _CameraScreenState extends State<CameraScreen> {
                                   children: [
                                     Text(
                                       'การกายภาพ\nบำบัดด้วยตนเอง',
-                                      style: GoogleFonts.sarabun(
+                                      style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -503,7 +502,7 @@ class _CameraScreenState extends State<CameraScreen> {
                                       },
                                       child: Text(
                                         'ข้อมูลเพิ่มเติม >',
-                                        style: GoogleFonts.sarabun(
+                                        style: TextStyle(
                                             color: Colors.blue),
                                       ),
                                     ),
@@ -515,10 +514,10 @@ class _CameraScreenState extends State<CameraScreen> {
                         ),
                       ),
                     ),
-                  ] else if (diagnosisType == "ไม่พบกระดูกสันหลัง") ...[
+                  ] else if (diagnosisType == "ไม่สามารถวิเคราะห์ได้") ...[
                     Text(
-                      "ไม่พบกระดูกสันหลังในรูปภาพ",
-                      style: GoogleFonts.sarabun(
+                      "ไม่สามารถวิเคราะห์ได้",
+                      style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                           color: Colors.orange),
@@ -527,13 +526,13 @@ class _CameraScreenState extends State<CameraScreen> {
                     const SizedBox(height: 10),
                     Text(
                       diagnosisResult,
-                      style: GoogleFonts.sarabun(fontSize: 16),
+                      style: TextStyle(fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 16),
                     Text(
                       "คำแนะนำ:",
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
@@ -541,13 +540,13 @@ class _CameraScreenState extends State<CameraScreen> {
                       "1. ถ่ายรูปบริเวณหลังให้เห็นกระดูกสันหลังชัดเจน\n"
                       "2. ควรมีแสงสว่างเพียงพอ\n"
                       "3. ถ่ายรูปในท่ายืนตรง มองเห็นแนวกระดูกสันหลังทั้งหมด",
-                      style: GoogleFonts.sarabun(fontSize: 16),
+                      style: TextStyle(fontSize: 16),
                       textAlign: TextAlign.left,
                     ),
                   ] else if (diagnosisType == "Uncertain") ...[
                     Text(
                       "ไม่สามารถวิเคราะห์ได้ชัดเจน",
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                           color: Colors.orange),
@@ -556,7 +555,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     const SizedBox(height: 10),
                     Text(
                       diagnosisResult,
-                      style: GoogleFonts.sarabun(fontSize: 16),
+                      style: TextStyle(fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                   ],

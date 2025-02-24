@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:scoliosis_analysis_app/pages/healthcard_widget.dart';
 import 'package:scoliosis_analysis_app/pages/exercise_page.dart';
 import 'package:scoliosis_analysis_app/pages/hospital_page.dart';
@@ -19,17 +18,16 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
   Widget build(BuildContext context) {
     final references = [
       ReferenceItem(
-        linkText: 'กระดูกสันหลังคดกายภาพ',
+        linkText: 'สรีรารัก คลินิกกายภาพบำบัด.(2565). กระดูกสันหลังคด กายภาพบำบัดอย่างไร รักษาหายได้ไหม. สืบค้นจาก https://www.sarirarak.com/single-post/กระดูกสันหลังคดกายภาพ',
         url: Uri.parse(
             'https://www.sarirarak.com/single-post/กระดูกสันหลังคดกายภาพ'),
-        copyright: 'Copyright © 2022 Sarirarak Co.,.Ltd.',
+       
       ),
       ReferenceItem(
-        linkText: 'สิ่งที่ควรทำและไม่ควรทำสำหรับผู้ป่วยกระดูกสันหลังคด',
+        linkText: 'ภัทร โฆสานันท์.(2564). สิ่งที่ควรทำและไม่ควรทำ เมื่อรู้ตัวว่ากระดูกสันหลังคด. สืบค้นจาก https://www.vejthani.com/th/2021/12/สิ่งที่ควรทำและไม่ควรท/',
         url: Uri.parse(
-            'https://www.vejthani.com/th/2021/12/%e0%b8%aa%e0%b8%b4%e0%b9%88%e0%b8%87%e0%b8%97%e0%b8%b5%e0%b9%88%e0%b8%84%e0%b8%a7%e0%b8%a3%e0%b8%97%e0%b8%b3%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b9%84%e0%b8%a1%e0%b9%88%e0%b8%84%e0%b8%a7%e0%b8%a3%e0%b8%97/'),
-        copyright:
-            '© Vejthani Hospital | JCI Accredited International Hospital in Bangkok, Thailand',
+            'https://www.vejthani.com/th/2021/12/สิ่งที่ควรทำและไม่ควรท/'),
+        
       ),
     ];
     return Scaffold(
@@ -213,7 +211,7 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
           SizedBox(height: 20),
           Text(
             'แนวทางการดูแลตัวเอง',
-            style: GoogleFonts.sarabun(
+            style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -221,7 +219,7 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
           ),
           Text(
             'สำหรับผู้ที่มีภาวะกระดูกสันหลังคด',
-            style: GoogleFonts.sarabun(
+            style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -248,7 +246,7 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
             children: [
               Text(
                 'คำแนะนำสำหรับการดูแลตัวเอง',
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF004aad),
@@ -257,7 +255,7 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
               SizedBox(height: 10),
               Text(
                 'การดูแลตัวเองอย่างถูกต้องสำหรับผู้ที่มีภาวะกระดูกสันหลังคดมีความสำคัญอย่างยิ่ง เพื่อป้องกันอาการที่อาจเกิดขึ้นและช่วยให้คุณใช้ชีวิตได้อย่างมีคุณภาพ บทความนี้จะให้คำแนะนำที่เป็นประโยชน์สำหรับการดูแลตัวเองในชีวิตประจำวัน',
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 14,
                   color: Colors.grey[700],
                 ),
@@ -296,7 +294,7 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
                   Expanded(
                     child: Text(
                       title,
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF004aad),
@@ -326,7 +324,7 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
           padding: EdgeInsets.symmetric(vertical: 8),
           child: Text(
             title,
-            style: GoogleFonts.sarabun(
+            style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: Colors.black87,
@@ -351,7 +349,7 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
                   Expanded(
                     child: Text(
                       point,
-                      style: GoogleFonts.sarabun(
+                      style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[700],
                       ),
@@ -387,7 +385,7 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
               SizedBox(height: 10),
               Text(
                 'คำแนะนำสำคัญ',
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -397,7 +395,7 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
               Text(
                 'หากคุณมีอาการปวดหลังรุนแรง หรือพบว่ามีการเปลี่ยนแปลงของกระดูกสันหลังที่รวดเร็ว ควรปรึกษาแพทย์โดยเร็วที่สุด การรักษาตั้งแต่เนิ่นๆ จะช่วยป้องกันภาวะแทรกซ้อนที่อาจเกิดขึ้นในอนาคต',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 14,
                   color: Colors.white,
                 ),
@@ -406,7 +404,7 @@ class _GuidelinesScreenState extends State<RiskGuidelinesScreen> {
               Text(
                 'อย่าละเลยการเปลี่ยนแปลงของร่างกาย หากพบความผิดปกติ',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.sarabun(
+                style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: Colors.yellow,
