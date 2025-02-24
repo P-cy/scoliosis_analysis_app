@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:scoliosis_analysis_app/pages/url_Widget.dart';
+import 'package:scoliosis_analysis_app/pages/url_widget.dart';
 
 class ExerciseScreen extends StatelessWidget {
   const ExerciseScreen({super.key});

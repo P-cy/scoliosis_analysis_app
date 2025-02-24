@@ -1,11 +1,11 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:scoliosis_analysis_app/pages/HealthCard_Widget.dart';
+import 'package:scoliosis_analysis_app/pages/healthcard_widget.dart';
 import 'package:scoliosis_analysis_app/pages/exercise_page.dart';
 import 'package:scoliosis_analysis_app/pages/hospital_page.dart';
-import 'package:scoliosis_analysis_app/pages/url_Widget.dart';
+import 'package:scoliosis_analysis_app/pages/url_widget.dart';
 
 class RiskGuidelinesScreen extends StatefulWidget {
   const RiskGuidelinesScreen({super.key});
