@@ -1,0 +1,2 @@
+/Users/kwdevteam/Desktop/app/scoliosis_analysis_app/android/app/.cxx/RelWithDebInfo/642b6y5v/x86/CMakeFiles/edit_cache.dir
+/Users/kwdevteam/Desktop/app/scoliosis_analysis_app/android/app/.cxx/RelWithDebInfo/642b6y5v/x86/CMakeFiles/rebuild_cache.dir
