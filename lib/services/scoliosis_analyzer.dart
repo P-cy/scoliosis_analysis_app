@@ -19,7 +19,15 @@ class ScoliosisAnalyzer {
     if (_isInitialized) return;
     
     try {
-      // Initialize YOLO model here when ultralytics_yolo is available
+      // TODO: Initialize YOLO model here when ultralytics_yolo is available
+      // Example code for when the package is ready:
+      // await UltralyticsYOLO.initializeModel(
+      //   modelPath: 'assets/ml/scoliosis_yolo_keypoint.pt',
+      //   task: YOLOTask.pose,
+      //   numClasses: 2,
+      //   numKeypoints: 12,
+      // );
+      
       // For now, we'll use placeholder logic
       _isInitialized = true;
     } catch (e) {
@@ -60,6 +68,13 @@ class ScoliosisAnalyzer {
 
   Future<List<Keypoint>> _detectKeypoints(img.Image image) async {
     // TODO: Replace with actual YOLO keypoint detection
+    // Example code for when ultralytics_yolo is available:
+    // final results = await UltralyticsYOLO.detectKeypoints(
+    //   image: image,
+    //   confidenceThreshold: _confidenceThreshold,
+    // );
+    // return results.keypoints;
+    
     // For now, generate mock keypoints for demonstration
     return _generateMockKeypoints(image.width, image.height);
   }

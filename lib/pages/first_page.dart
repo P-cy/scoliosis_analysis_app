@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoliosis_analysis_app/pages/camera_page.dart';
 import 'package:scoliosis_analysis_app/pages/exercise_page.dart';
-import 'package:scoliosis_analysis_app/pages/home_page.dart';
+import 'package:scoliosis_analysis_app/screens/home_screen.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});

@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:scoliosis_analysis_app/pages/first_page.dart';
+import 'package:scoliosis_analysis_app/screens/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WarningScreen extends StatefulWidget {
@@ -172,7 +172,7 @@ class WarningScreenState extends State<WarningScreen>
                           if (context.mounted) {
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                builder: (context) => const FirstScreen(),
+                                builder: (context) => const HomeScreen(),
                               ),
                             );
                           }
