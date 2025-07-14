@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:scoliosis_analysis_app/pages/first_page.dart';
-import 'package:scoliosis_analysis_app/pages/home_page.dart';
+import 'package:scoliosis_analysis_app/screens/home_screen.dart';
 import 'package:scoliosis_analysis_app/pages/warning_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,21 +13,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: '',
+        title: 'วิเคราะห์กระดูกสันหลังคด',
         theme: ThemeData(
           primarySwatch: Colors.green,
+          fontFamily: 'Roboto',
         ),
         home: FutureBuilder<bool>(
           future: checkDisclaimerAccepted(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator();
+              return const Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
             }
 
             final bool disclaimerAccepted = snapshot.data ?? false;
 
             if (disclaimerAccepted) {
-              return const FirstScreen();
+              return const HomeScreen();
             } else {
               return const WarningScreen();
             }
@@ -35,4 +40,9 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false);
   }
+}
+
+Future<bool> checkDisclaimerAccepted() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getBool('disclaimer_accepted') ?? false;
 }

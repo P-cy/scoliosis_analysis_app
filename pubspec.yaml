@@ -40,17 +40,14 @@ dependencies:
   camera: ^0.11.1
   image_picker: ^1.1.2
   persistent_bottom_nav_bar: ^6.2.1
-  google_mlkit_image_labeling: ^0.13.0
+  ultralytics_yolo: ^0.0.4
   google_fonts: ^6.2.1
   flutter_launcher_icons: ^0.14.2
   font_awesome_flutter: ^10.8.0
   url_launcher: ^6.1.14
   change_app_package_name: ^1.4.0
   flutter_vector_icons: ^2.0.0
-  tflite_flutter: ^0.11.0
   image: ^4.5.2
-  google_mlkit_commons: any
-  google_mlkit_object_detection: ^0.14.0
   shared_preferences: ^2.5.2
   
 flutter_icons:
