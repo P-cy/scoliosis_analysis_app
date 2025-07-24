@@ -21,7 +21,11 @@ class MyApp extends StatelessWidget {
           future: checkDisclaimerAccepted(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator();
+              return const Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
             }
 
             final bool disclaimerAccepted = snapshot.data ?? false;

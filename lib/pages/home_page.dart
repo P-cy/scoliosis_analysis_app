@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Image.asset(
                             'assets/img/poster_spine.jpg',
                             height: 160,
-                            width: screenWidth - 32,
+                            width: (screenWidth - 32).clamp(0.0, double.infinity),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -200,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Container(
                       height: 175,
-                      width: screenWidth - 32,
+                      width: (screenWidth - 32).clamp(0.0, double.infinity),
                       child: HealthCard(
                         imagePath: 'assets/img/doctor.jpg',
                         title: 'รายชื่อ\nโรงพยาบาล',

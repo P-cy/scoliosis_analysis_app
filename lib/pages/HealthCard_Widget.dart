@@ -62,7 +62,7 @@ class HealthCard extends StatelessWidget {
                   Text(
                     title,
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -70,8 +70,8 @@ class HealthCard extends StatelessWidget {
                   TextButton(
                     onPressed: onTap,
                     child: const Text(
-                      'รายละเอียด >',
-                      style: TextStyle(color: Colors.blue),
+                      'รายละเอียด',
+                      style: TextStyle(color: Colors.blue, fontSize: 12),
                     ),
                   ),
                 ],
